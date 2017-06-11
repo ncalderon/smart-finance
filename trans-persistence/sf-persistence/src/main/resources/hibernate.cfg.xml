@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_7847d3e246e99bb</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <mapping class="com.calderon.sf.persistence.dto.AccountEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.AccountStatusEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.AccountTypeEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.AppConfigEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.AcccountEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.TranCategoryEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.TranStatusEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.TranTypeEntity"/>
+    <mapping class="com.calderon.sf.persistence.dto.TransactionEntity"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

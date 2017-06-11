@@ -100,7 +100,7 @@ create table tran_type
 )
 ;
 
-create table transaction
+create table tran
 (
 	id int auto_increment
 		primary key,
@@ -130,19 +130,19 @@ create table transaction
 ;
 
 create index transaction_tran_category_id_fk
-	on transaction (category_id)
+	on tran (category_id)
 ;
 
 create index transaction_tran_status_id_fk
-	on transaction (status_id)
+	on tran (status_id)
 ;
 
 create index transaction_tran_type_id_fk
-	on transaction (type_id)
+	on tran (type_id)
 ;
 
 create index transaction_account_id_fk
-	on transaction (account_id)
+	on tran (account_id)
 ;
 
 

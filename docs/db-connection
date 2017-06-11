@@ -1,0 +1,3 @@
+jdbc:mysql://hostname:port/dbname
+
+jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_7847d3e246e99bb
