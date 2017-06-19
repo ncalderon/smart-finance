@@ -16,7 +16,6 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>sf-persistence</module>
-        <module>persistence-external</module>
         <module>ext-persistence</module>
     </modules>
 

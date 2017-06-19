@@ -1,5 +1,7 @@
 package com.calderon.sf.reader;
 
+import com.calderon.sf.commons.persistence.enums.AccountTypeEnum;
+
 import java.time.LocalDateTime;
 
 /**

@@ -1,8 +1,7 @@
 package com.calderon.sf.importer;
 
-import com.calderon.sf.persistence.dao.TransactionDAO;
+import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
 import com.calderon.sf.persistence.dto.AccountEntity;
-import com.calderon.sf.persistence.dto.TranStatusEnum;
 import com.calderon.sf.persistence.dto.TransactionEntity;
 import com.calderon.sf.reader.Transaction;
 
@@ -23,17 +22,22 @@ public class TranHandler {
     public void perform () {
         TransactionEntity transactionEntity = new TransactionEntity();
         transactionEntity.setAccountId(account.getId());
-        transactionEntity.setStatusId(TranStatusEnum.DEFAULT.id());
-        transactionEntity.setCategoryId(CategoryMatcher.matchCategory(tran.getDescription()).getId());
+        transactionEntity.setStatusId(TranStatusEnum.PENDING.id());
+        transactionEntity.setCategoryId(CategoryMatcher.matchCategory(tran));
         transactionEntity.setTranAmount(tran.getAmount());
-        transactionEntity.setTranDate(new Timestamp(tran.getPostDate().toEpochDay()));
+        transactionEntity.setTranPostDate(new Timestamp(tran.getPostDate().toEpochDay()));
         transactionEntity.setTranDesc(tran.getDescription());
         transactionEntity.setTranRefNum(tran.getReferenceNumber());
         transactionEntity.setTypeId(tran.getType().id());
         transactionEntity.setTranNum(tran.getSerialNumber());
-        TransactionDAO.saveOrUpdate(transactionEntity);
+        //TransactionDAO.saveOrUpdate(transactionEntity);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "TranHandler{" +
+                "tran=" + tran +
+                ", account=" + account +
+                '}';
+    }
 }

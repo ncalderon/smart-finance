@@ -1,5 +1,7 @@
 package com.calderon.sf.reader;
 
+import com.calderon.sf.commons.persistence.enums.TranTypeEnum;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

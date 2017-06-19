@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by Nathaniel on 6/10/2017.
+ * Created by Nathaniel on 6/17/2017.
  */
 @Entity
 @Table(name = "account_type", schema = "heroku_7847d3e246e99bb", catalog = "")
@@ -87,5 +87,15 @@ public class AccountTypeEntity {
 
     public void setAccountsById(Collection<AccountEntity> accountsById) {
         this.accountsById = accountsById;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountTypeEntity{" +
+                "id=" + id +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

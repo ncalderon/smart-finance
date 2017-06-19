@@ -1,15 +1,18 @@
 package com.calderon.sf.persistence.dto;
 
+import com.calderon.sf.persistence.interceptor.AbstractEntityListener;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by Nathaniel on 6/10/2017.
+ * Created by Nathaniel on 6/17/2017.
  */
 @Entity
+@EntityListeners(AbstractEntityListener.class)
 @Table(name = "bank", schema = "heroku_7847d3e246e99bb", catalog = "")
-public class BankEntity {
+public class BankEntity extends AbstractEntity {
     private int id;
     private Timestamp created;
     private Timestamp modified;
@@ -17,7 +20,7 @@ public class BankEntity {
     private String description;
     private Collection<AccountEntity> accountsById;
 
-    @Id()
+    @Id
     @Column(name = "id")
     public int getId() {
         return id;

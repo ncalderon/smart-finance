@@ -26,19 +26,21 @@ public class MetadataParser {
 
     private static final int BANK_NAME_INDEX = 4;
     private static final int ACCOUNT_INDEX = 5;
+    private static final String accountLabelToRemove = "Cuenta: ************";
 
     public static CsvMetadata parse (String sourceName, String contentMeta, String separator) {
 
-        String[] metaFromSourcename = sourceName.split(separator);
+        //String[] metaFromSourcename = sourceName.split(separator);
         String[] metaFromContent = contentMeta.split(separator);
 
         return new CsvMetadata.Builder()
-                .setSourceName(metaFromSourcename[SOURCENAME_INDEX])
-                .setSourceType(metaFromSourcename[SOURCE_TYPE_INDEX])
-                .setAccountName(metaFromSourcename[ACCOUNT_NAME_INDEX])
-                .setAccountNumber(metaFromContent[ACCOUNT_INDEX])
+                .setSourceName(sourceName.substring(0, sourceName.indexOf(".")))
+                .setSourceType(sourceName.substring(sourceName.indexOf(".")+1))
+                .setAccountName(metaFromContent[ACCOUNT_INDEX].replace(accountLabelToRemove, ""))
+                .setAccountNumber(metaFromContent[ACCOUNT_INDEX].replace(accountLabelToRemove, ""))
                 .setBankName(metaFromContent[BANK_NAME_INDEX])
-                .setCreated(MetadataParser.parseGenDate(GEN_DATE_PATTERN))
+                .setAccountType(metaFromContent[ACCOUNT_INDEX].indexOf("************") == -1? AccountTypeEnum.DEFAULT: AccountTypeEnum.CREDIT_CARD)
+                .setCreated(MetadataParser.parseGenDate(metaFromContent[GENERATE_DATE_INDEX]))
                 .build()
                 ;
 

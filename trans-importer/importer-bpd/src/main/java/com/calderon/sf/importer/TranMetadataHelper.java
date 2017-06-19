@@ -1,5 +1,6 @@
 package com.calderon.sf.importer;
 
+import com.calderon.sf.commons.persistence.enums.AccountStatusEnum;
 import com.calderon.sf.persistence.dao.AccountDAO;
 import com.calderon.sf.persistence.dao.BankDAO;
 import com.calderon.sf.persistence.dto.*;
@@ -26,16 +27,15 @@ public class TranMetadataHelper {
 
     private AccountEntity createAccount() {
         BankEntity bank = getBank();
-        AccountTypeEnum accountTypeEnum = AccountTypeEnum.valueOf(tranMetadata.getAccountType().name());
         AccountEntity account = new AccountEntity();
         account.setBankId(bank.getId());
-        account.setTypeId(accountTypeEnum.id());
+        account.setTypeId(tranMetadata.getAccountType().id());
         account.setAccName(tranMetadata.getAccountName());
         account.setAccDescription(tranMetadata.getAccountName());
         account.setAccNum(tranMetadata.getAccountNumber());
         account.setAccBalance(new BigDecimal(0));
         account.setStatusId(AccountStatusEnum.ACTIVE.id());
-        AccountDAO.saveOrUpdate(account);
+        //AccountDAO.saveOrUpdate(account);
         return account;
     }
     private BankEntity getBank(){
@@ -49,7 +49,7 @@ public class TranMetadataHelper {
         BankEntity bank = new BankEntity();
         bank.setName(tranMetadata.getBankName());
         bank.setDescription(tranMetadata.getBankName());
-        BankDAO.saveOrUpdate(bank);
+        //BankDAO.saveOrUpdate(bank);
         return bank;
     }
 

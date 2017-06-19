@@ -22,6 +22,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.calderon.sf</groupId>
+      <artifactId>commons</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
 
   <build>

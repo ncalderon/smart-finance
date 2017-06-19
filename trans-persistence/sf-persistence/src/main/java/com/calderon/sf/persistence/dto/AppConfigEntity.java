@@ -3,7 +3,7 @@ package com.calderon.sf.persistence.dto;
 import javax.persistence.*;
 
 /**
- * Created by Nathaniel on 6/10/2017.
+ * Created by Nathaniel on 6/17/2017.
  */
 @Entity
 @Table(name = "app_config", schema = "heroku_7847d3e246e99bb", catalog = "")
@@ -88,5 +88,16 @@ public class AppConfigEntity {
         result = 31 * result + (configValue != null ? configValue.hashCode() : 0);
         result = 31 * result + status;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "AppConfigEntity{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", configKey='" + configKey + '\'' +
+                ", configValue='" + configValue + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

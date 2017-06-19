@@ -5,6 +5,6 @@ package com.calderon.sf.reader;
  */
 class CsvMetadataFilter {
     public static boolean filter (String text) {
-        return text.isEmpty();
+        return !text.isEmpty();
     }
 }

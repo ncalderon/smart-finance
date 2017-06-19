@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile="sqlite-jdbc-3.18.0.jar" -DgroupId="com.enigmabridge" -DartifactId="hibernate4-sqlite-dialect" -Dversion="0.1.2" -Dpackaging="jar" -DgeneratePom="true"

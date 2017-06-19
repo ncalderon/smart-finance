@@ -1,32 +1,37 @@
 package com.calderon.sf.persistence.dto;
 
+import com.calderon.sf.persistence.interceptor.AbstractEntityListener;
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by Nathaniel on 6/10/2017.
+ * Created by Nathaniel on 6/17/2017.
  */
 @Entity
+@EntityListeners(AbstractEntityListener.class)
 @Table(name = "account", schema = "heroku_7847d3e246e99bb", catalog = "")
-public class AccountEntity {
+public class AccountEntity extends AbstractEntity {
     private int id;
+    private Integer statusId;
+    private Integer bankId;
+    private Integer typeId;
     private Timestamp created;
     private Timestamp modified;
     private String accNum;
     private String accName;
     private String accDescription;
     private BigDecimal accBalance;
-    private Integer statusId;
-    private Integer bankId;
-    private Integer typeId;
     private AccountStatusEntity accountStatusByStatusId;
     private BankEntity bankByBankId;
     private AccountTypeEntity accountTypeByTypeId;
     private Collection<TransactionEntity> transactionsById;
 
-    @Id
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -34,6 +39,36 @@ public class AccountEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "status_id")
+    public Integer getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(Integer statusId) {
+        this.statusId = statusId;
+    }
+
+    @Basic
+    @Column(name = "bank_id")
+    public Integer getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(Integer bankId) {
+        this.bankId = bankId;
+    }
+
+    @Basic
+    @Column(name = "type_id")
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
     }
 
     @Basic
@@ -56,6 +91,7 @@ public class AccountEntity {
         this.modified = modified;
     }
 
+    @NaturalId
     @Basic
     @Column(name = "acc_num")
     public String getAccNum() {
@@ -104,6 +140,9 @@ public class AccountEntity {
         AccountEntity that = (AccountEntity) o;
 
         if (id != that.id) return false;
+        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
+        if (bankId != null ? !bankId.equals(that.bankId) : that.bankId != null) return false;
+        if (typeId != null ? !typeId.equals(that.typeId) : that.typeId != null) return false;
         if (created != null ? !created.equals(that.created) : that.created != null) return false;
         if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
         if (accNum != null ? !accNum.equals(that.accNum) : that.accNum != null) return false;
@@ -118,6 +157,9 @@ public class AccountEntity {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
+        result = 31 * result + (bankId != null ? bankId.hashCode() : 0);
+        result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
         result = 31 * result + (modified != null ? modified.hashCode() : 0);
         result = 31 * result + (accNum != null ? accNum.hashCode() : 0);
@@ -127,38 +169,8 @@ public class AccountEntity {
         return result;
     }
 
-    @Basic
-    @Column(name = "status_id")
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
-    }
-
-    @Basic
-    @Column(name = "bank_id")
-    public Integer getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(Integer bankId) {
-        this.bankId = bankId;
-    }
-
-    @Basic
-    @Column(name = "type_id")
-    public Integer getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
-
     @ManyToOne
-    @JoinColumn(name = "status_id", referencedColumnName = "id")
+    @JoinColumn(name = "status_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountStatusEntity getAccountStatusByStatusId() {
         return accountStatusByStatusId;
     }
@@ -168,7 +180,7 @@ public class AccountEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "bank_id", referencedColumnName = "id")
+    @JoinColumn(name = "bank_id", referencedColumnName = "id", insertable = false, updatable = false)
     public BankEntity getBankByBankId() {
         return bankByBankId;
     }
@@ -178,7 +190,7 @@ public class AccountEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    @JoinColumn(name = "type_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountTypeEntity getAccountTypeByTypeId() {
         return accountTypeByTypeId;
     }
@@ -194,5 +206,21 @@ public class AccountEntity {
 
     public void setTransactionsById(Collection<TransactionEntity> transactionsById) {
         this.transactionsById = transactionsById;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountEntity{" +
+                "id=" + id +
+                ", statusId=" + statusId +
+                ", bankId=" + bankId +
+                ", typeId=" + typeId +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", accNum='" + accNum + '\'' +
+                ", accName='" + accName + '\'' +
+                ", accDescription='" + accDescription + '\'' +
+                ", accBalance=" + accBalance +
+                '}';
     }
 }

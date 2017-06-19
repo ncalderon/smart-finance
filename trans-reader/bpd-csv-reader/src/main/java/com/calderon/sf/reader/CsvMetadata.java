@@ -107,4 +107,45 @@ class CsvMetadata implements TranMetadata {
     public String getAccountNumber() {
         return accountNumber;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CsvMetadata that = (CsvMetadata) o;
+
+        if (sourceType != null ? !sourceType.equals(that.sourceType) : that.sourceType != null) return false;
+        if (sourceName != null ? !sourceName.equals(that.sourceName) : that.sourceName != null) return false;
+        if (created != null ? !created.equals(that.created) : that.created != null) return false;
+        if (bankName != null ? !bankName.equals(that.bankName) : that.bankName != null) return false;
+        if (accountName != null ? !accountName.equals(that.accountName) : that.accountName != null) return false;
+        if (accountType != that.accountType) return false;
+        return accountNumber != null ? accountNumber.equals(that.accountNumber) : that.accountNumber == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = sourceType != null ? sourceType.hashCode() : 0;
+        result = 31 * result + (sourceName != null ? sourceName.hashCode() : 0);
+        result = 31 * result + (created != null ? created.hashCode() : 0);
+        result = 31 * result + (bankName != null ? bankName.hashCode() : 0);
+        result = 31 * result + (accountName != null ? accountName.hashCode() : 0);
+        result = 31 * result + (accountType != null ? accountType.hashCode() : 0);
+        result = 31 * result + (accountNumber != null ? accountNumber.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CsvMetadata{" +
+                "sourceType='" + sourceType + '\'' +
+                ", sourceName='" + sourceName + '\'' +
+                ", created=" + created +
+                ", bankName='" + bankName + '\'' +
+                ", accountName='" + accountName + '\'' +
+                ", accountType=" + accountType +
+                ", accountNumber='" + accountNumber + '\'' +
+                '}';
+    }
 }

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by Nathaniel on 6/10/2017.
+ * Created by Nathaniel on 6/17/2017.
  */
 @Entity
 @Table(name = "tran_type", schema = "heroku_7847d3e246e99bb", catalog = "")
@@ -87,5 +87,15 @@ public class TranTypeEntity {
 
     public void setTransactionsById(Collection<TransactionEntity> transactionsById) {
         this.transactionsById = transactionsById;
+    }
+
+    @Override
+    public String toString() {
+        return "TranTypeEntity{" +
+                "id=" + id +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
