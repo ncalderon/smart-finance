@@ -1,9 +1,11 @@
 package com.calderon.sf.persistence.dto;
 
 import com.calderon.sf.persistence.interceptor.AbstractEntityListener;
-import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -12,6 +14,7 @@ import java.util.Collection;
  * Created by Nathaniel on 6/17/2017.
  */
 @Entity
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @EntityListeners(AbstractEntityListener.class)
 @Table(name = "account", schema = "heroku_7847d3e246e99bb", catalog = "")
 public class AccountEntity extends AbstractEntity {

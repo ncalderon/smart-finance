@@ -15,10 +15,10 @@ public class CategoryMatcher {
 
     private static final int defaultExpenseCategory = 2;
     private static final int defaultIncomeCategory = 99;
-    private static final List<TranCategoryEntity> categories;
-    static {
+    /*private static final List<TranCategoryEntity> categories;*/
+    /*static {
         categories = CategoryDAO.getAllChildCategories();
-    }
+    }*/
     public static int matchCategory (Transaction tran) {
         /*Optional<TranCategoryEntity> other = categories.stream()
                 .filter(c -> c.getName().equals(defaultCategory))

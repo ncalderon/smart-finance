@@ -28,6 +28,9 @@
     <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.11" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="module" module-name="em-persistence" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-ehcache:5.2.9.Final" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.18.0" level="project" />
     <orderEntry type="library" name="Maven: com.enigmabridge:hibernate4-sqlite-dialect:0.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.testng:testng:6.8.8" level="project" />

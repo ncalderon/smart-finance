@@ -11,21 +11,21 @@ public class ExpenseReportEntity {
     private long id;
     private String account;
     private String amount;
-    private String category;
-    private String subcategory;
+    private String category = "";
+    private String subcategory = "";
     private String paymentMethod;
     private String description;
     private long expensed;
     private long modified;
-    private String referenceNumber;
-    private String property;
+    private String referenceNumber = "";
+    private String property = "";
     private String status;
-    private String property2;
-    private String property3;
-    private String property4;
-    private String property5;
-    private String tax;
-    private String expenseTag;
+    private String property2 = "";
+    private String property3 = "";
+    private String property4 = "";
+    private String property5 = "";
+    private String tax = "";
+    private String expenseTag = "";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

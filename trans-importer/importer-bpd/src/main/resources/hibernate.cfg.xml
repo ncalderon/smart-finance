@@ -17,7 +17,9 @@
     <property name="connection.username">bfdd7f114c4574</property>
     <property name="connection.password">f8574160 </property>
     <property name="show_sql">true</property>
-
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <property name="hibernate.cache.use_query_cache">true</property>
+    <property name="hibernate.cache.region.factory_class ">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 
     <mapping class="com.calderon.sf.persistence.dto.AccountEntity"/>
     <mapping class="com.calderon.sf.persistence.dto.AccountStatusEntity"/>

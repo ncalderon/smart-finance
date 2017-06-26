@@ -16,6 +16,8 @@ public class Transaction {
     private String referenceNumber;
     private String serialNumber;
     private String description;
+    private Account account;
+
     private Transaction(Builder builder) {
         this.postDate = builder.postDate;
         this.type = builder.type;
@@ -32,46 +34,44 @@ public class Transaction {
         private String referenceNumber;
         private String serialNumber;
         private String description;
-        private String unsetFields = "postDate, type, amount, referenceNumber, serialNumber, description,";
+        private Account account;
+
+        public Builder setAccount(Account account) {
+            this.account = account;
+            return this;
+        }
+
         public Builder setPostDate (LocalDate postDate) {
             this.postDate = postDate;
-            unsetFields = unsetFields.replace("postDate,", "");
             return this;
         }
 
         public Builder setType(TranTypeEnum type) {
             this.type = type;
-            unsetFields = unsetFields.replace("type,", "");
             return this;
         }
 
         public Builder setAmount(BigDecimal amount) {
             this.amount = amount;
-            unsetFields = unsetFields.replace("amount,", "");
             return this;
         }
 
         public Builder setReferenceNumber(String referenceNumber) {
             this.referenceNumber = referenceNumber;
-            unsetFields = unsetFields.replace("referenceNumber,", "");
             return this;
         }
 
         public Builder setSerialNumber(String serialNumber) {
             this.serialNumber = serialNumber;
-            unsetFields = unsetFields.replace("serialNumber,", "");
             return this;
         }
 
         public Builder setDescription(String description) {
             this.description = description;
-            unsetFields = unsetFields.replace("description,", "");
             return this;
         }
 
         public Transaction build () {
-            if(!unsetFields.trim().isEmpty())
-                throw new NullPointerException("Those fields are required before build: " + unsetFields);
             return new Transaction(this);
         }
     }
@@ -100,16 +100,12 @@ public class Transaction {
         return description;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "postDate=" + postDate +
-                ", type=" + type +
-                ", amount=" + amount +
-                ", referenceNumber='" + referenceNumber + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
@@ -125,7 +121,8 @@ public class Transaction {
         if (referenceNumber != null ? !referenceNumber.equals(that.referenceNumber) : that.referenceNumber != null)
             return false;
         if (serialNumber != null ? !serialNumber.equals(that.serialNumber) : that.serialNumber != null) return false;
-        return description != null ? description.equals(that.description) : that.description == null;
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        return account != null ? account.equals(that.account) : that.account == null;
     }
 
     @Override
@@ -136,7 +133,21 @@ public class Transaction {
         result = 31 * result + (referenceNumber != null ? referenceNumber.hashCode() : 0);
         result = 31 * result + (serialNumber != null ? serialNumber.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (account != null ? account.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "postDate=" + postDate +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", referenceNumber='" + referenceNumber + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", description='" + description + '\'' +
+                ", account=" + account +
+                '}';
     }
 }
 

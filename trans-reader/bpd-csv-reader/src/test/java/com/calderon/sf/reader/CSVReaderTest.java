@@ -15,20 +15,16 @@ import java.util.stream.Stream;
  */
 public class CSVReaderTest {
 
-    private static final Path path = Paths.get("../../../repository/bpd/");
+    private static final Path path = Paths.get("../../repository/bpd/");
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void TestReadTransaction () throws IOException {
-        Files.list(path).forEach(f->{
-
-            CsvReader csvReader = new CsvReader(f);
-            csvReader.getTransactions().forEach(System.out::println);
-            assertTrue(true);
-
-        });
+        CsvReader csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\pdcsvexport.csv"));
+        csvReader.getTransactions().forEach(System.out::println);
+        assertTrue(true);
     }
 
-    @Test()
+    @Test(enabled = false)
     public void TestReadMetaData () throws IOException {
 
 

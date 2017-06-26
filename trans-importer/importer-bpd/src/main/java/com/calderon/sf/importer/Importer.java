@@ -1,11 +1,11 @@
 package com.calderon.sf.importer;
 
+import com.calderon.sf.importer.parser.TransactionParser;
 import com.calderon.sf.persistence.dao.TransactionDAO;
 import com.calderon.sf.persistence.dto.AccountEntity;
+import com.calderon.sf.persistence.dto.BankEntity;
 import com.calderon.sf.persistence.dto.TransactionEntity;
-import com.calderon.sf.reader.CsvReader;
-import com.calderon.sf.reader.Reader;
-import com.calderon.sf.reader.Transaction;
+import com.calderon.sf.reader.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -52,22 +52,16 @@ public class Importer {
     private void processFile (Path source)  {
         log.info("Processing file: " + source);
         Reader reader = new CsvReader(source);
-        TranMetadataHelper metadataHelper = new TranMetadataHelper(reader.getMetadata());
-        AccountEntity account = metadataHelper.getAccount();
+        AccountEntity account = new AccountHelper(reader.getAccount()).getAccount();
+        BankEntity bank = new BankHelper(reader.getAccount().getBank()).getBank();
         log.info("Currently account: " + account);
         List<TransactionEntity> transactions = reader.getTransactions().stream().map(x->parseTransaction(x)).collect(Collectors.toList());
-        TransactionDAO.saveTransactions(account, transactions);
-        reader.getTransactions().stream().forEach(x->processTransaction(account, x));
+        TransactionDAO.saveTransactions(bank, account, transactions);
+
     }
 
     private TransactionEntity parseTransaction (Transaction tran) {
+        log.info("Transaction to process: " + tran);
         return TransactionParser.parse(tran);
-    }
-
-    private void processTransaction (AccountEntity account, Transaction transaction) {
-        TranHandler handler = new TranHandler(account, transaction);
-        log.info("Transaction to process: " + transaction);
-        handler.perform();
-
     }
 }

@@ -18,7 +18,7 @@ public class HibernateHelper {
         log.info("Setting up Hibernate SessionFactory...");
         final StandardServiceRegistry registry =
                         new StandardServiceRegistryBuilder()
-                        .configure() // configures settings from hibernate.cfg.xml
+                        .configure("external/hibernate.cfg.xml") // configures settings from hibernate.cfg.xml
                         .build();
         SessionFactory sessionFactory = null;
         try {

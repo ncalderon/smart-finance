@@ -1,6 +1,7 @@
 package com.calderon.sf.persistence.dto;
 
 import com.calderon.sf.persistence.interceptor.AbstractEntityListener;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -104,6 +105,7 @@ public class TransactionEntity extends AbstractEntity {
 
     @Basic
     @Column(name = "tran_num")
+    @NaturalId
     public String getTranNum() {
         return tranNum;
     }
