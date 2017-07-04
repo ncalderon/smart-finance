@@ -1,6 +1,7 @@
 package com.calderon.sf.persistence.dto;
 
 import com.calderon.sf.persistence.interceptor.AbstractEntityListener;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -52,6 +53,7 @@ public class BankEntity extends AbstractEntity {
 
     @Basic
     @Column(name = "name")
+    @NaturalId()
     public String getName() {
         return name;
     }
@@ -77,23 +79,23 @@ public class BankEntity extends AbstractEntity {
 
         BankEntity that = (BankEntity) o;
 
-        if (id != that.id) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-
-        return true;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        return result;
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "BankEntity{" +
+                "id=" + id +
+                ", created=" + created +
+                ", modified=" + modified +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
     @OneToMany(mappedBy = "bankByBankId")

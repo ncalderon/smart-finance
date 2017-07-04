@@ -1,5 +1,6 @@
 package com.calderon.sf.exporter;
 
+import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
 import com.calderon.sf.exporter.parser.ReportParser;
 import com.calderon.sf.persistence.dao.TransactionDAO;
 import com.calderon.sf.persistence.dto.TransactionEntity;
@@ -16,27 +17,46 @@ import java.util.stream.Collectors;
  */
 public class Exporter {
     private static final Logger log = LogManager.getLogger(Exporter.class.getName());
+    private List<TransactionEntity> transactions;
+    private List<ExpenseReportEntity> reports;
+
     public static void main (String ... args) {
         Exporter exporter = new Exporter();
         exporter.init();
     }
 
-    public void init() {
+    public Exporter() {
+        init();
+    }
+
+    private void init() {
         log.info("Initializing exporter process...");
-        List<ExpenseReportEntity> reports = getReports();
-        log.info("Count of transactions found: " + reports.size());
-        doExport(reports);
+        seekPendingTransactions();
+        parseTransactions();
     }
 
-    private List<ExpenseReportEntity> getReports() {
+    private void seekPendingTransactions() {
         log.info("Trying to get pending transactions...");
-        return TransactionDAO
-                .getPendingTransactions()
-                .stream()
-                .map(x-> ReportParser.parse(x)).collect(Collectors.toList());
+        transactions = TransactionDAO.getPendingTransactions();
+
     }
 
-    private void doExport(List<ExpenseReportEntity> reports){
-        ReportDAO.saveReports(reports);
+    private void parseTransactions() {
+        log.info("Trying to parse Transactions to Reports...");
+        reports = transactions.stream().map(x-> ReportParser.parse(x)).collect(Collectors.toList());
     }
+
+    private boolean updateToStatusExported() {
+        return TransactionDAO.updateStatus(transactions, TranStatusEnum.EXPORTED);
+    }
+
+    public boolean export(){
+        log.info("Transactions to export: " + reports.size());
+        boolean result = ReportDAO.saveReports(reports);
+        log.info("Transaction export success was: " + result);
+        if (result)
+            result = updateToStatusExported();
+        return result;
+    }
+
 }

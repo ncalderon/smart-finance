@@ -8,20 +8,22 @@ import java.util.stream.Stream;
  */
 public class AccountLinesInterpreter implements BodyInterpreter<String> {
 
-    private Stream<String> lines;
-    private static final int ACCOUNT_LINES_BEGIN_INDEX = 1;
+    private static final int ACCOUNT_LINES_BEGIN_INDEX = 6;
     private static final int ACCOUNT_LINES_END_INDEX = 8;
     private static final String META_SEPARATOR = ",";
 
-    public AccountLinesInterpreter(Stream<String> lines) {
+    private Stream<String> lines;
+    private String accountName;
+
+    public AccountLinesInterpreter(Stream<String> lines, String fileName) {
         this.lines = lines;
+        accountName = fileName;
     }
 
     @Override
     public String interpret() {
-        return lines.skip(ACCOUNT_LINES_BEGIN_INDEX)
-                .limit(ACCOUNT_LINES_END_INDEX)
-                .filter(String::isEmpty)
+        return  accountName + META_SEPARATOR+ lines.limit(ACCOUNT_LINES_END_INDEX).skip(ACCOUNT_LINES_BEGIN_INDEX)
+                .filter(s->!s.isEmpty())
                 .collect(Collectors.joining(META_SEPARATOR));
 
     }

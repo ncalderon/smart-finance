@@ -17,13 +17,18 @@ import java.util.List;
  */
 public class AccountDAO extends BasicDAO {
     private static final Logger log = LogManager.getLogger(AccountDAO.class.getName());
-    public static AccountEntity getAccountByAccNum(String accNum) {
-        log.info("Getting account by AccNum: " + accNum);
+    public static AccountEntity getAccountByAccNumAndName(String accNum, String name) {
+        log.info(String.format("Getting account by AccNum: {0}, Name: {1}", accNum, name));
         Session session = HibernateHelper.getSessionFactory().openSession();
         try {
 
-            AccountEntity account = session.bySimpleNaturalId( AccountEntity.class ).getReference( accNum );
-            Hibernate.initialize(account.getTransactionsById());
+            AccountEntity account =
+                    session.byNaturalId( AccountEntity.class )
+                    .using("accNum", accNum)
+                    .using("accName", name).load();
+
+            /*if(account != null)*/
+                /*Hibernate.initialize(account.getTransactionsById());*/
             /*CriteriaBuilder builder = session.getCriteriaBuilder();
 
             CriteriaQuery<AccountEntity> criteria = builder.createQuery( AccountEntity.class );

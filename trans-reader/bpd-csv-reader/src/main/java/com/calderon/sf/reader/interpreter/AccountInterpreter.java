@@ -2,45 +2,57 @@ package com.calderon.sf.reader.interpreter;
 
 import com.calderon.sf.commons.persistence.enums.AccountTypeEnum;
 import com.calderon.sf.reader.Account;
-import com.calderon.sf.reader.Reader;
-import com.calderon.sf.reader.parser.DatetimeParser;
 
-import java.text.ParsePosition;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.time.LocalDateTime;
 
 /**
  * Created by Nathaniel on 6/24/2017.
  */
 public class AccountInterpreter implements BodyInterpreter<Account> {
-    private String[] accountValues;
 
+    private static final Logger log = LogManager.getLogger(AccountInterpreter.class.getName());
     private static final String splitRegex = ",";
-
-    private static final int GENERATE_DATE_INDEX = 3;
-    private static final int GEN_DATE_COLUMN_START_INDEX = 12;
-    private static final String GEN_DATE_PATTERN = "dd/MM/yyyy hh:mm:ss a";
-
-    private static final int BANK_NAME_INDEX = 4;
-    private static final int ACCOUNT_INDEX = 5;
+    private static final int ACCOUNT_NAME_INDEX = 0;
+    private static final int BANK_NAME_INDEX = 1;
+    private static final int ACCOUNT_NUM_INDEX = 2;
     private static final String accountLabelToRemove = "Cuenta: ************";
-
+    private String[] accountValues;
     public AccountInterpreter(String account) {
         if (account == null) {
             throw new IllegalArgumentException("String account cannot be null.");
         }
+        log.info("Creating interpreter for account: " + account);
         this.accountValues = account.split(splitRegex);
     }
 
     @Override
     public Account interpret() {
+        log.info("Trying to interpret account: ", accountValues);
         return new Account.Builder()
-                .setBank(new BankInterpreter(accountValues[4]).interpret())
-                .setCreated(DatetimeParser.parse(accountValues[3], GEN_DATE_PATTERN, new ParsePosition(GEN_DATE_COLUMN_START_INDEX)))
-                .setNumber(accountValues[ACCOUNT_INDEX].replace(accountLabelToRemove, ""))
-                .setName(accountValues[ACCOUNT_INDEX].replace(accountLabelToRemove, ""))
-                .setType(accountValues[ACCOUNT_INDEX].indexOf("************") == -1? AccountTypeEnum.DEFAULT: AccountTypeEnum.CREDIT_CARD)
+                .setBank(new BankInterpreter(accountValues[BANK_NAME_INDEX]).interpret())
+                .setCreated(getCreated())
+                .setNumber(getNumber())
+                .setName(getName())
+                .setType(getType())
                 .build();
+    }
+
+    private AccountTypeEnum getType(){
+        return accountValues[ACCOUNT_NUM_INDEX].indexOf("************") == -1? AccountTypeEnum.DEFAULT: AccountTypeEnum.CREDIT_CARD;
+    }
+
+    private String getName(){
+        return accountValues[ACCOUNT_NAME_INDEX];
+    }
+
+    private String getNumber(){
+        return accountValues[ACCOUNT_NUM_INDEX].replace(accountLabelToRemove, "");
+    }
+
+    private LocalDateTime getCreated(){
+        return LocalDateTime.now();
     }
 }

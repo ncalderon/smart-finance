@@ -1,4 +1,4 @@
-package com.calderon.sf.importer;
+package com.calderon.sf.importer.helpers;
 
 import com.calderon.sf.persistence.dao.BankDAO;
 import com.calderon.sf.persistence.dto.BankEntity;

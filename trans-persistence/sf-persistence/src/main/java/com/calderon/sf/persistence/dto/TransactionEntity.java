@@ -93,6 +93,7 @@ public class TransactionEntity extends AbstractEntity {
         this.categoryId = categoryId;
     }
 
+    @NaturalId
     @Basic
     @Column(name = "account_id")
     public Integer getAccountId() {
@@ -103,9 +104,9 @@ public class TransactionEntity extends AbstractEntity {
         this.accountId = accountId;
     }
 
-    @Basic
-    @Column(name = "tran_num")
     @NaturalId
+    @Basic
+    @Column(name = "tran_num", unique = true)
     public String getTranNum() {
         return tranNum;
     }

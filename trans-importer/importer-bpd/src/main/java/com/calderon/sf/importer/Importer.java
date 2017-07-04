@@ -1,5 +1,7 @@
 package com.calderon.sf.importer;
 
+import com.calderon.sf.importer.helpers.AccountHelper;
+import com.calderon.sf.importer.helpers.BankHelper;
 import com.calderon.sf.importer.parser.TransactionParser;
 import com.calderon.sf.persistence.dao.TransactionDAO;
 import com.calderon.sf.persistence.dto.AccountEntity;
@@ -46,7 +48,8 @@ public class Importer {
 
     private boolean filterValidFiles (Path path) {
         log.info("Validating file: " + path);
-        return Files.isRegularFile(path) && path.getFileName().toString().endsWith(".csv");
+        String filename = path.getFileName().toString();
+        return Files.isRegularFile(path) && !filename.contains(".ignore") && filename.endsWith(".csv");
     }
 
     private void processFile (Path source)  {

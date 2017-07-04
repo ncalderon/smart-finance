@@ -21,8 +21,8 @@ public class ExporterTest {
     @Test
     public void testInit() throws Exception {
         Exporter exporter = new Exporter();
-        exporter.init();
-        assertEquals(1,1);
+        boolean result = exporter.export();
+        assertEquals(true,result);
     }
 
 }

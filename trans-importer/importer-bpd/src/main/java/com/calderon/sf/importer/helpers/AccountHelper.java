@@ -1,4 +1,4 @@
-package com.calderon.sf.importer;
+package com.calderon.sf.importer.helpers;
 
 import com.calderon.sf.commons.persistence.enums.AccountStatusEnum;
 import com.calderon.sf.persistence.dao.AccountDAO;
@@ -43,7 +43,7 @@ public class AccountHelper {
     }
 
     private AccountEntity getFromDB(){
-        AccountEntity accountEntity = AccountDAO.getAccountByAccNum(account.getNumber());
+        AccountEntity accountEntity = AccountDAO.getAccountByAccNumAndName(account.getNumber(), account.getName());
         if (null != accountEntity)
             putOnCatche(accountEntity);
         return accountEntity;

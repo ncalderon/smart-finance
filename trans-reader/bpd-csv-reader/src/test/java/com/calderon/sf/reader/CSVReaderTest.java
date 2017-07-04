@@ -1,5 +1,7 @@
 package com.calderon.sf.reader;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 import java.io.IOException;
@@ -16,23 +18,29 @@ import java.util.stream.Stream;
 public class CSVReaderTest {
 
     private static final Path path = Paths.get("../../repository/bpd/");
+    private CsvReader csvReader;
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void TestReadTransaction () throws IOException {
-        CsvReader csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\pdcsvexport.csv"));
         csvReader.getTransactions().forEach(System.out::println);
         assertTrue(true);
     }
 
-    @Test(enabled = false)
-    public void TestReadMetaData () throws IOException {
+    @BeforeMethod
+    public void setUp() throws Exception {
+        csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\Gold US.PENULTIMO.csv"));
+    }
 
+    @AfterMethod
+    public void tearDown() throws Exception {
 
-        CsvReader csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\pdcsvexport.csv"));
-        System.out.println(csvReader.getMetadata());
-        assertTrue(true);
+    }
 
-
+    @Test
+    public void testReadAccount() throws Exception {
+        Account account = csvReader.getAccount();
+        System.out.println("account = " + account);
+        assertTrue(account != null);
     }
 
     @Test(enabled = false)

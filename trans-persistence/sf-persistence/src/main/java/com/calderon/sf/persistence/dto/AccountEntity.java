@@ -14,7 +14,6 @@ import java.util.Collection;
  * Created by Nathaniel on 6/17/2017.
  */
 @Entity
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @EntityListeners(AbstractEntityListener.class)
 @Table(name = "account", schema = "heroku_7847d3e246e99bb", catalog = "")
 public class AccountEntity extends AbstractEntity {
@@ -105,6 +104,7 @@ public class AccountEntity extends AbstractEntity {
         this.accNum = accNum;
     }
 
+    @NaturalId
     @Basic
     @Column(name = "acc_name")
     public String getAccName() {
@@ -142,34 +142,12 @@ public class AccountEntity extends AbstractEntity {
 
         AccountEntity that = (AccountEntity) o;
 
-        if (id != that.id) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
-        if (bankId != null ? !bankId.equals(that.bankId) : that.bankId != null) return false;
-        if (typeId != null ? !typeId.equals(that.typeId) : that.typeId != null) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
-        if (accNum != null ? !accNum.equals(that.accNum) : that.accNum != null) return false;
-        if (accName != null ? !accName.equals(that.accName) : that.accName != null) return false;
-        if (accDescription != null ? !accDescription.equals(that.accDescription) : that.accDescription != null)
-            return false;
-        if (accBalance != null ? !accBalance.equals(that.accBalance) : that.accBalance != null) return false;
-
-        return true;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
-        result = 31 * result + (bankId != null ? bankId.hashCode() : 0);
-        result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        result = 31 * result + (accNum != null ? accNum.hashCode() : 0);
-        result = 31 * result + (accName != null ? accName.hashCode() : 0);
-        result = 31 * result + (accDescription != null ? accDescription.hashCode() : 0);
-        result = 31 * result + (accBalance != null ? accBalance.hashCode() : 0);
-        return result;
+        return id;
     }
 
     @ManyToOne

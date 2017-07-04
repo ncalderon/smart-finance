@@ -23,9 +23,9 @@ public class AccountDAOTest {
 
     @org.testng.annotations.Test
     public void testGetAccountByAccNum() throws Exception {
-        AccountEntity account = AccountDAO.getAccountByAccNum("1928");
-        System.out.println(account.getTransactionsById());
-        assertNotEquals(AccountDAO.getAccountByAccNum("1928"), null);
+        AccountEntity account = AccountDAO.getAccountByAccNumAndName("1928", "Gold US");
+        System.out.println(account);
+        assertNotEquals(account, null);
     }
 
     @Test(enabled = false)

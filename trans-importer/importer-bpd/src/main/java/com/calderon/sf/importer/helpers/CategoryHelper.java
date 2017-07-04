@@ -1,4 +1,4 @@
-package com.calderon.sf.importer;
+package com.calderon.sf.importer.helpers;
 
 import com.calderon.sf.commons.persistence.enums.TranTypeEnum;
 import com.calderon.sf.persistence.dao.CategoryDAO;
@@ -11,10 +11,10 @@ import java.util.Optional;
 /**
  * Created by Nathaniel on 6/10/2017.
  */
-public class CategoryMatcher {
+public class CategoryHelper {
 
     private static final int defaultExpenseCategory = 2;
-    private static final int defaultIncomeCategory = 99;
+    private static final int defaultIncomeCategory = 100;
     /*private static final List<TranCategoryEntity> categories;*/
     /*static {
         categories = CategoryDAO.getAllChildCategories();

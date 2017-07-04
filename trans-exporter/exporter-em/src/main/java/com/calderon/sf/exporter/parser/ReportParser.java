@@ -20,9 +20,9 @@ public class ReportParser {
         log.info("Parsing transaction: " + tran);
         ExpenseReportEntity report = new ExpenseReportEntity();
         report.setAccount(tran.getAccountByAccountId().getAccName());
-        report.setCategory(tran.getTranCategoryByCategoryId().getName());
+        report.setSubcategory(tran.getTranCategoryByCategoryId().getName());
         if(tran.getTranCategoryByCategoryId().getParentId() != 0)
-            report.setSubcategory(CategoryDAO.get(tran.getTranCategoryByCategoryId().getParentId()).getName());
+            report.setCategory(CategoryDAO.get(tran.getTranCategoryByCategoryId().getParentId()).getName());
         report.setDescription(tran.getTranDesc());
         report.setPaymentMethod(TranMethodEnum.valueOf(tran.getTranMethod()).codename());
         report.setExpensed(tran.getTranPostDate().getTime());

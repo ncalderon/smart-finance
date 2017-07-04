@@ -39,8 +39,9 @@ public class ReportDAO {
         return null;
     }
 
-    public static void saveReports(List<ExpenseReportEntity> reports) {
+    public static boolean saveReports(List<ExpenseReportEntity> reports) {
         log.info("Trying to save reports: "  + reports);
+        boolean result = false;
         Session session = HibernateHelper.getSessionFactory().openSession();
         try {
             session.beginTransaction();
@@ -49,6 +50,7 @@ public class ReportDAO {
                         session.saveOrUpdate(t);
                     });
             session.getTransaction().commit();
+            result = true;
         } catch (Exception ex) {
             session.getTransaction().rollback();
             log.info("Error trying to save Reports... ", ex);
@@ -57,5 +59,6 @@ public class ReportDAO {
             if (session.isOpen())
                 session.close();
         }
+        return result;
     }
 }
