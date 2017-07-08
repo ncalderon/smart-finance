@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
  * Created by Nathaniel on 6/18/2017.
  */
 public class ReportParser {
-    private static final String defaultStatus = "Uncleared";
+    private static final String defaultStatus = "Cleared";
     private static final String defaultProperty4 = "1 PCS";
     private static final Logger log = LogManager.getLogger(ReportParser.class.getName());
     public static final ExpenseReportEntity parse (TransactionEntity tran) {
@@ -30,6 +30,7 @@ public class ReportParser {
         report.setAmount(tran.getTranAmount().toString());
         report.setStatus(defaultStatus);
         report.setProperty4(defaultProperty4);
+        report.setReferenceNumber(tran.getTranNum());
         return report;
     }
 }

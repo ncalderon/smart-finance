@@ -9,4 +9,5 @@ import java.util.stream.Stream;
 public interface Reader {
     Account getAccount();
     List<Transaction> getTransactions();
+    void markAsImported();
 }

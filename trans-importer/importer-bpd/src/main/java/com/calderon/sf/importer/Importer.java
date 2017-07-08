@@ -24,22 +24,25 @@ import java.util.stream.Stream;
  */
 public class Importer {
     private static final Logger log = LogManager.getLogger(Importer.class.getName());
-    private static final String DEFAULT_SOURCE_PATH = "bpd/import";
+    private static final String DEFAULT_SOURCE_PATH = "repository/bpd";
     private final Path repository;
 
     public Importer() {
         this(Paths.get(DEFAULT_SOURCE_PATH));
+        init();
     }
     public Importer(Path sourcePath) {
         this.repository = sourcePath;
-    }
-    public void doImport()throws IOException {
         init();
     }
 
-    private void init() throws IOException {
+    public void doImport()throws IOException {
         log.info("Seeking files from Repository: ", repository);
         seekPendingFiles().filter(this::filterValidFiles).forEach(this::processFile);
+    }
+
+    private void init()  {
+
     }
 
     private Stream<Path> seekPendingFiles() throws IOException {
@@ -59,8 +62,9 @@ public class Importer {
         BankEntity bank = new BankHelper(reader.getAccount().getBank()).getBank();
         log.info("Currently account: " + account);
         List<TransactionEntity> transactions = reader.getTransactions().stream().map(x->parseTransaction(x)).collect(Collectors.toList());
-        TransactionDAO.saveTransactions(bank, account, transactions);
-
+        boolean result = TransactionDAO.saveTransactions(bank, account, transactions);
+        if(result)
+            reader.markAsImported();
     }
 
     private TransactionEntity parseTransaction (Transaction tran) {

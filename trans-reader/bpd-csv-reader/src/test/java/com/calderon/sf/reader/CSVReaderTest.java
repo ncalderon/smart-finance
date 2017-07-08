@@ -28,7 +28,7 @@ public class CSVReaderTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
-        csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\Gold US.PENULTIMO.csv"));
+        csvReader = new CsvReader(Paths.get("..\\..\\repository\\bpd\\Gold US.ANTEPENULTIMO.ignore.csv"));
     }
 
     @AfterMethod
@@ -41,6 +41,12 @@ public class CSVReaderTest {
         Account account = csvReader.getAccount();
         System.out.println("account = " + account);
         assertTrue(account != null);
+    }
+
+    @Test
+    public void testMarkFileAsImported() throws Exception {
+        csvReader.markAsImported();
+        assertTrue(true);
     }
 
     @Test(enabled = false)

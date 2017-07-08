@@ -9,11 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.*;
+import org.hibernate.criterion.Order;
 
-import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.*;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Root;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +39,7 @@ public class TransactionDAO extends BasicDAO{
             IntStream.range(0, transactions.size()).forEach(i->{
                 TransactionEntity tran = transactions.get(i);
                 tran.setAccountId(account.getId());
+
                 session.saveOrUpdate(tran);
                 if ( i > 0 && i % batchSize == 0 ) {
                     //flush a batch of inserts and release memory
@@ -65,6 +66,17 @@ public class TransactionDAO extends BasicDAO{
         return result;
     }
 
+    private static TransactionEntity getTranByAccountAndNum(Session session, int accountId, String tranNum){
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<TransactionEntity> criteria = builder.createQuery( TransactionEntity.class );
+        Root<TransactionEntity> root = criteria.from( TransactionEntity.class );
+        criteria.select( root );
+        criteria.where( builder.equal( root.get( "accountId" ), accountId ), builder.equal( root.get( "tranNum" ), tranNum ));
+        List<TransactionEntity> results = session.createQuery( criteria ).getResultList();
+        if(results.size() > 0)
+            return results.get(0);
+        return null;
+    }
 
     public static List<TransactionEntity> getPendingTransactions() {
         log.info("Getting pending transactions...  ");
@@ -80,9 +92,32 @@ public class TransactionDAO extends BasicDAO{
             root.fetch( "tranStatusByStatusId", JoinType.LEFT);
             root.fetch( "tranCategoryByCategoryId", JoinType.LEFT);*/
             criteria.where( builder.equal( root.get( "statusId" ), TranStatusEnum.PENDING.id()) );
+            criteria.orderBy(builder.asc(root.get("tranPostDate")));
             return session.createQuery( criteria ).getResultList();
         } catch (Exception ex) {
             log.info("Error trying to get pending transactions... ", ex);
+            ex.printStackTrace();
+        } finally {
+            if (session.isOpen())
+                session.close();
+        }
+        return null;
+    }
+
+    public static TransactionEntity getByAccountIdAndTranNum (int accountId, String tranNum) {
+        log.info(String.format("Seeking transaction by: AccountId: {0}, TranNum {1}.", accountId, tranNum));
+        Session session = HibernateHelper.getSessionFactory().openSession();
+        try {
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<TransactionEntity> criteria = builder.createQuery( TransactionEntity.class );
+            Root<TransactionEntity> root = criteria.from( TransactionEntity.class );
+            criteria.select( root );
+            criteria.where( builder.equal( root.get( "accountId" ), accountId ), builder.equal( root.get( "tranNum" ), tranNum ));
+            List<TransactionEntity> results = session.createQuery( criteria ).getResultList();
+            if(results.size() > 0)
+                return results.get(0);
+        } catch (Exception ex) {
+            log.info("Error seeking transaction. ", ex);
             ex.printStackTrace();
         } finally {
             if (session.isOpen())

@@ -31,4 +31,10 @@ public class TransactionDAOTest {
         trans.stream().forEach(x->System.out.println(x));
     }
 
+    @Test
+    public void testGetTranByAccountAndNum() throws Exception {
+        TransactionEntity tran = TransactionDAO.getByAccountIdAndTranNum(42, "74420197119547820060498");
+        System.out.println(tran);
+        assertTrue(tran != null);
+    }
 }
