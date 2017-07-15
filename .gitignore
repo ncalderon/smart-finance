@@ -13,4 +13,4 @@ hs_err_pid*
 /.idea/
 /db
 /repository/*/
-*/target/*
+*/target/**
