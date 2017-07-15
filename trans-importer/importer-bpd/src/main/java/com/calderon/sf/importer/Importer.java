@@ -37,22 +37,25 @@ public class Importer {
     }
 
     public void doImport()throws IOException {
-        log.info("Seeking files from Repository: ", repository);
-        seekPendingFiles().filter(this::filterValidFiles).forEach(this::processFile);
+        log.info(String.format("Looking for pending files on Repository: {0}", repository));
+        findPendingFiles().filter(this::filter).forEach(this::processFile);
     }
 
     private void init()  {
 
     }
 
-    private Stream<Path> seekPendingFiles() throws IOException {
+    private Stream<Path> findPendingFiles() throws IOException {
         return Files.list(repository);
     }
 
-    private boolean filterValidFiles (Path path) {
+    private boolean filter(Path path) {
         log.info("Validating file: " + path);
         String filename = path.getFileName().toString();
-        return Files.isRegularFile(path) && !filename.contains(".ignore") && filename.endsWith(".csv");
+        boolean valid = Files.isRegularFile(path) && !filename.contains(".ignore") && filename.endsWith(".csv");
+        if(!valid)
+            log.info(String.format("Skipped file: ", filename));
+        return valid;
     }
 
     private void processFile (Path source)  {

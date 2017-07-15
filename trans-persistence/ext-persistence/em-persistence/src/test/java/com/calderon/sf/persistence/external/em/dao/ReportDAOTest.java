@@ -23,7 +23,7 @@ public class ReportDAOTest {
 
     @Test
     public void testGetReportsByAccount() throws Exception {
-        List<ExpenseReportEntity> list = ReportDAO.getReportsByAccount("Jet Blue PESOS");
+        List<ExpenseReportEntity> list = ReportDAO.getReportsByAccount("JetBlue RD");
         System.out.println(list);
         assertTrue(list.size() > 0);
     }

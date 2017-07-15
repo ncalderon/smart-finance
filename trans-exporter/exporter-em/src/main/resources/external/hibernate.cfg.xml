@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:sqlite:C:/dev/workspace/git-repos/smart-finance/db/em.db</property>
+    <property name="connection.url">jdbc:sqlite:../../db/em.db</property>
     <property name="hibernate.dialect">com.enigmabridge.hibernate.dialect.SQLiteDialect</property>
     <property name="connection.driver_class">org.sqlite.JDBC</property>
     <property name="show_sql">true</property>
