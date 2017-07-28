@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>com.calderon.sf</groupId>
-    <artifactId>trans-exporter</artifactId>
+    <artifactId>exporter</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <modelVersion>4.0.0</modelVersion>

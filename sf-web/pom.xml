@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sf-web-app</module>
+        <module>sf-web-data</module>
     </modules>
 
 

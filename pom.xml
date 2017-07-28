@@ -14,7 +14,7 @@
         <module>trans-exporter</module>
         <module>commons</module>
         <module>sf-web</module>
-
+        <module>sf-data</module>
     </modules>
 
 

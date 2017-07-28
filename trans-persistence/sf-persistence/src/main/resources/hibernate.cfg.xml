@@ -8,7 +8,7 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <property name="connection.username">bfdd7f114c4574</property>
-    <property name="connection.password">f8574160 </property>
+    <property name="connection.password">f8574160</property>
     <property name="show_sql">true</property>
 
 

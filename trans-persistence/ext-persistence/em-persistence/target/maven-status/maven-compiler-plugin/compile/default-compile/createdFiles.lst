@@ -1,0 +1,4 @@
+com\calderon\sf\persistence\external\em\dto\ExpenseReportEntity.class
+com\calderon\sf\persistence\external\em\dao\ReportDAO.class
+com\calderon\sf\persistence\external\em\dto\ExpensePreferenceEntity.class
+com\calderon\sf\persistence\external\em\util\HibernateHelper.class
