@@ -1,7 +1,8 @@
-package com.calderon.sf.data.service;
+package com.calderon.sf.data.service.impl;
 
 import com.calderon.sf.data.model.AccountEntity;
 import com.calderon.sf.data.repository.AccountRepository;
+import com.calderon.sf.data.service.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class AccountServiceImpl implements AccountService {
         this.accountRepository = repository;
     }*/
 
-    public List<AccountEntity> findByAccName(String accName) {
-        return accountRepository.findByAccName(accName);
+    public AccountEntity findOneByAccNumAndAccName(String accNum, String accName) {
+        return accountRepository.findOneByAccNumAndAccName(accNum, accName);
     }
 }
