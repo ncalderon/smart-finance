@@ -1,6 +1,7 @@
-package com.calderon.sf.api.reader.interpreter;
+package com.calderon.sf.reader.interpreter;
 
 import com.calderon.sf.api.reader.Transaction;
+import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
 import com.calderon.sf.commons.persistence.enums.TranTypeEnum;
 import com.calderon.sf.api.reader.Account;
 

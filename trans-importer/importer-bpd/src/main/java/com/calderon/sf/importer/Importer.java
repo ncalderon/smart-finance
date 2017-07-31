@@ -1,16 +1,15 @@
-package com.calderon.sf.api.importers;
+package com.calderon.sf.importer;
 
-import com.calderon.sf.api.importers.helpers.BankHelper;
-import com.calderon.sf.api.importers.parser.TransactionParser;
-import com.calderon.sf.api.importers.helpers.AccountHelper;
-import com.calderon.sf.api.reader.CsvReader;
+import com.calderon.sf.importer.helpers.BankHelper;
+import com.calderon.sf.importer.parser.TransactionParser;
+import com.calderon.sf.importer.helpers.AccountHelper;
+import com.calderon.sf.reader.CsvReader;
 import com.calderon.sf.api.reader.Reader;
 import com.calderon.sf.api.reader.Transaction;
 import com.calderon.sf.persistence.dao.TransactionDAO;
 import com.calderon.sf.persistence.dto.AccountEntity;
 import com.calderon.sf.persistence.dto.BankEntity;
 import com.calderon.sf.persistence.dto.TransactionEntity;
-import com.calderon.sf.reader.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

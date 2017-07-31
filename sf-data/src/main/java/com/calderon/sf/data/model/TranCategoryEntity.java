@@ -2,6 +2,7 @@ package com.calderon.sf.data.model;
 
 
 import com.calderon.sf.data.interceptor.AbstractEntityListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -98,6 +99,7 @@ public class TranCategoryEntity extends AbstractEntity {
         return result;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tranCategoryByCategoryId")
     public Collection<TranCategoryRegexEntity> getTranCategoryRegexesById() {
         return tranCategoryRegexesById;
@@ -107,6 +109,7 @@ public class TranCategoryEntity extends AbstractEntity {
         this.tranCategoryRegexesById = tranCategoryRegexesById;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tranCategoryByCategoryId")
     public Collection<TransactionEntity> getTransactionsById() {
         return transactionsById;

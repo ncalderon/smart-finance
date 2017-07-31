@@ -1,6 +1,7 @@
 package com.calderon.sf.data.model;
 
 import com.calderon.sf.data.interceptor.AbstractEntityListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -98,6 +99,7 @@ public class BankEntity extends AbstractEntity {
                 '}';
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "bankByBankId")
     public Collection<AccountEntity> getAccountsById() {
         return accountsById;

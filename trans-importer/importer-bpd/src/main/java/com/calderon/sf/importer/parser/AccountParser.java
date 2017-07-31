@@ -1,4 +1,4 @@
-package com.calderon.sf.api.importers.parser;
+package com.calderon.sf.importer.parser;
 
 /**
  * Created by Nathaniel on 6/25/2017.

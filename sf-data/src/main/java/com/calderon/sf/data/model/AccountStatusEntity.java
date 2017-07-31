@@ -1,5 +1,7 @@
 package com.calderon.sf.data.model;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -80,7 +82,8 @@ public class AccountStatusEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "accountStatusByStatusId")
+
+    @OneToMany(mappedBy = "accountStatusByStatusId", fetch = FetchType.LAZY)
     public Collection<AccountEntity> getAccountsById() {
         return accountsById;
     }

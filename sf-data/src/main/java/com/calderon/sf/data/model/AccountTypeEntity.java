@@ -1,5 +1,7 @@
 package com.calderon.sf.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.sql.Timestamp;
@@ -81,6 +83,7 @@ public class AccountTypeEntity {
         return result;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "accountTypeByTypeId")
     public Collection<AccountEntity> getAccountsById() {
         return accountsById;

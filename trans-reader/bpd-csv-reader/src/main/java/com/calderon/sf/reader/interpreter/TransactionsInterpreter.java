@@ -1,8 +1,9 @@
-package com.calderon.sf.api.reader.interpreter;
+package com.calderon.sf.reader.interpreter;
 
 import com.calderon.sf.api.reader.Transaction;
 import com.calderon.sf.api.reader.Account;
-import com.calderon.sf.api.reader.filter.TransactionFilters;
+import com.calderon.sf.reader.filter.TransactionFilters;
+import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
 
 import java.util.List;
 import java.util.stream.Collectors;

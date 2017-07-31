@@ -1,4 +1,6 @@
-package com.calderon.sf.api.reader.interpreter;
+package com.calderon.sf.reader.interpreter;
+
+import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

@@ -1,5 +1,6 @@
-package com.calderon.sf.api.importers;
+package com.calderon.sf;
 
+import com.calderon.sf.importer.Importer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package com.calderon.sf.data.service.impl;
+package com.calderon.sf.data.service;
 
 import com.calderon.sf.data.model.AccountEntity;
 import com.calderon.sf.data.repository.AccountRepository;

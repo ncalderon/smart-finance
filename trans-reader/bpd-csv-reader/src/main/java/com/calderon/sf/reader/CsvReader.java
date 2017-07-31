@@ -1,8 +1,11 @@
-package com.calderon.sf.api.reader;
+package com.calderon.sf.reader;
 
-import com.calderon.sf.api.reader.interpreter.AccountInterpreter;
-import com.calderon.sf.api.reader.interpreter.TransactionsInterpreter;
-import com.calderon.sf.api.reader.interpreter.AccountLinesInterpreter;
+import com.calderon.sf.api.reader.Account;
+import com.calderon.sf.api.reader.Reader;
+import com.calderon.sf.api.reader.Transaction;
+import com.calderon.sf.reader.interpreter.AccountInterpreter;
+import com.calderon.sf.reader.interpreter.TransactionsInterpreter;
+import com.calderon.sf.reader.interpreter.AccountLinesInterpreter;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

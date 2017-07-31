@@ -1,9 +1,11 @@
 package com.calderon.sf.data.model;
 
 import com.calderon.sf.data.interceptor.AbstractEntityListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NaturalId;
+
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -170,6 +172,7 @@ public class AccountEntity extends AbstractEntity {
         return id;
     }
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountStatusEntity getAccountStatusByStatusId() {
@@ -180,6 +183,7 @@ public class AccountEntity extends AbstractEntity {
         this.accountStatusByStatusId = accountStatusByStatusId;
     }
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bank_id", referencedColumnName = "id", insertable = false, updatable = false)
     public BankEntity getBankByBankId() {
@@ -190,8 +194,8 @@ public class AccountEntity extends AbstractEntity {
         this.bankByBankId = bankByBankId;
     }
 
-    @Fetch(FetchMode.JOIN)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountTypeEntity getAccountTypeByTypeId() {
         return accountTypeByTypeId;
@@ -201,6 +205,7 @@ public class AccountEntity extends AbstractEntity {
         this.accountTypeByTypeId = accountTypeByTypeId;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "accountByAccountId")
     public Collection<TransactionEntity> getTransactionsById() {
         return transactionsById;

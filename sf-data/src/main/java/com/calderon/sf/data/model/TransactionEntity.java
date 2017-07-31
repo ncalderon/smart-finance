@@ -1,6 +1,7 @@
 package com.calderon.sf.data.model;
 
 import com.calderon.sf.data.interceptor.AbstractEntityListener;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -179,6 +180,7 @@ public class TransactionEntity extends AbstractEntity {
         return id;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "status_id", referencedColumnName = "id", insertable = false, updatable = false)
     public TranStatusEntity getTranStatusByStatusId() {
@@ -189,6 +191,7 @@ public class TransactionEntity extends AbstractEntity {
         this.tranStatusByStatusId = tranStatusByStatusId;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id", insertable = false, updatable = false)
     public TranTypeEntity getTranTypeByTypeId() {
@@ -199,6 +202,7 @@ public class TransactionEntity extends AbstractEntity {
         this.tranTypeByTypeId = tranTypeByTypeId;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", insertable = false, updatable = false)
     public TranCategoryEntity getTranCategoryByCategoryId() {

@@ -44,14 +44,14 @@ public class Application implements ApplicationRunner{
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
-        Application app = new Application();
+        /*Application app = new Application();*/
         System.out.println("Main!");
 
     }
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        System.out.println(service.findByAccName("Gold RD"));
+        System.out.println(service.findOneByAccNumAndAccName("1928","Gold RD"));
     }
 
     /*@Bean

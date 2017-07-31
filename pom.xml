@@ -15,6 +15,7 @@
         <module>commons</module>
         <module>sf-web</module>
         <module>sf-data</module>
+        <module>sf-importer</module>
     </modules>
 
 

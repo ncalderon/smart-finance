@@ -1,4 +1,4 @@
-package com.calderon.sf.api.reader.filter;
+package com.calderon.sf.reader.filter;
 
 import java.util.function.Predicate;
 import java.util.regex.Pattern;

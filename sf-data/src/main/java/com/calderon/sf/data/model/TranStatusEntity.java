@@ -1,5 +1,7 @@
 package com.calderon.sf.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -80,6 +82,7 @@ public class TranStatusEntity {
         return result;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tranStatusByStatusId")
     public Collection<TransactionEntity> getTransactionsById() {
         return transactionsById;
