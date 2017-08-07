@@ -1,7 +1,7 @@
 package com.calderon.sf.reader.interpreter;
 
 import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
-import com.calderon.sf.commons.persistence.enums.AccountTypeEnum;
+import com.calderon.sf.commons.data.AccountTypeEnum;
 import com.calderon.sf.api.reader.Account;
 
 import org.apache.logging.log4j.LogManager;
