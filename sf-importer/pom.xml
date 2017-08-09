@@ -11,8 +11,17 @@
 
     <artifactId>sf-importer</artifactId>
     <packaging>pom</packaging>
+
+    <properties>
+        <!--<release-train>Ingalls-SR5</release-train>-->
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <mysql.version>6.0.6</mysql.version>
+    </properties>
+    
     <modules>
-        <module>sf-bpd-importer</module>
+        <module>sf-importer-spec</module>
+        <module>sf-db-importer</module>
+        <module>sf-importer-test</module>
     </modules>
 
 

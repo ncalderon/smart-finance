@@ -1,6 +1,6 @@
 package com.calderon.sf.data.service;
 
-import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
+import com.calderon.sf.commons.data.TranStatusEnum;
 import com.calderon.sf.data.model.TransactionEntity;
 import com.calderon.sf.data.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,9 @@ public class TransactionServiceImpl implements TransactionService {
         return repository.findByStatusIdOrderByTranPostDateAsc(TranStatusEnum.PENDING.id());
     }
 
-    public void saveTransactions(List<TransactionEntity> transactions) {
+    public void save(TransactionEntity transaction) { repository.save(transaction);}
+
+    public void save(List<TransactionEntity> transactions) {
         repository.save(transactions);
     }
 }

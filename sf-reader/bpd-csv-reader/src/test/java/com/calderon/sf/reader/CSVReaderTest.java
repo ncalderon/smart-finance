@@ -1,10 +1,5 @@
-package com.calderon.sf.api.reader;
+package com.calderon.sf.reader;
 
-import com.calderon.sf.reader.CsvReader;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-import static org.testng.Assert.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
@@ -17,7 +12,7 @@ import java.nio.file.Paths;
  */
 public class CSVReaderTest {
 
-    private static final Path path = Paths.get("../../repository/bpd/");
+    /*private static final Path path = Paths.get("../../repository/bpd/");
     private CsvReader csvReader;
 
     @Test(enabled = false)
@@ -54,5 +49,5 @@ public class CSVReaderTest {
         Files.list(path).forEach(System.out::println);
         System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS));
 
-    }
+    }*/
 }

@@ -3,7 +3,7 @@
 
   <parent>
     <groupId>com.calderon.sf</groupId>
-    <artifactId>trans-reader</artifactId>
+    <artifactId>sf-reader</artifactId>
     <version>1.0</version>
   </parent>
 
@@ -16,8 +16,16 @@
   <dependencies>
     <dependency>
       <groupId>com.calderon.sf</groupId>
-      <artifactId>trans-reader-spec</artifactId>
+      <artifactId>sf-reader-spec</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
   </dependencies>
 

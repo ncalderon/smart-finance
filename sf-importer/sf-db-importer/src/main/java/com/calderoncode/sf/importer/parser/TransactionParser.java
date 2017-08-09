@@ -1,0 +1,40 @@
+package com.calderoncode.sf.importer.parser;
+
+import com.calderon.sf.commons.data.TranMethodEnum;
+import com.calderon.sf.commons.data.TranStatusEnum;
+import com.calderon.sf.data.model.TransactionEntity;
+import com.calderoncode.sf.importer.service.CategoryServiceData;
+import com.calderoncode.sf.reader.Transaction;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+
+/**
+ * Created by Nathaniel on 6/18/2017.
+ */
+public class TransactionParser {
+    public static TransactionEntity parse (Transaction tran) {
+        TransactionEntity transactionEntity = new TransactionEntity();
+        transactionEntity.setStatusId(TranStatusEnum.PENDING.id());
+        transactionEntity.setCategoryId(CategoryServiceData.matchCategory(tran));
+        transactionEntity.setTranAmount(tran.getAmount());
+        transactionEntity.setTranPostDate(getTranPostDate(tran));
+        transactionEntity.setTranDesc(tran.getDescription());
+        transactionEntity.setTranRefNum(tran.getReferenceNumber());
+        transactionEntity.setTypeId(tran.getType().id());
+        transactionEntity.setTranNum(tran.getSerialNumber());
+        transactionEntity.setTranMethod(getTranMethod(tran).name());
+        return transactionEntity;
+    }
+
+    private static TranMethodEnum getTranMethod (Transaction tran) {
+        return TranMethodEnum.DEFAULT;
+    }
+
+    private static Timestamp getTranPostDate (Transaction tran) {
+        Calendar instance = Calendar.getInstance();
+        instance.set(tran.getPostDate().getYear(), tran.getPostDate().getMonthValue()-1, tran.getPostDate().getDayOfMonth(), 0, 0, 0);
+        instance.set(Calendar.MILLISECOND, 0);
+        return new Timestamp(instance.getTimeInMillis());
+    }
+}

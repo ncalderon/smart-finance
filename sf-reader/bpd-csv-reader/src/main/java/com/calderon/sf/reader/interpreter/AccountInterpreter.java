@@ -1,9 +1,8 @@
 package com.calderon.sf.reader.interpreter;
 
-import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
 import com.calderon.sf.commons.data.AccountTypeEnum;
-import com.calderon.sf.api.reader.Account;
-
+import com.calderoncode.sf.reader.Account;
+import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +30,7 @@ public class AccountInterpreter implements BodyInterpreter<Account> {
 
     @Override
     public Account interpret() {
-        log.info("Trying to interpret account: ", accountValues);
+        log.info("Trying to interpret account: " + accountValues);
         return new Account.Builder()
                 .setBank(new BankInterpreter(accountValues[BANK_NAME_INDEX]).interpret())
                 .setCreated(getCreated())

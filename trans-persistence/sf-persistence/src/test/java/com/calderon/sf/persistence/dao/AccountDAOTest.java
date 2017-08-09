@@ -1,7 +1,7 @@
 package com.calderon.sf.persistence.dao;
 
-import com.calderon.sf.commons.persistence.enums.AccountStatusEnum;
-import com.calderon.sf.commons.persistence.enums.AccountTypeEnum;
+import com.calderon.sf.commons.data.AccountStatusEnum;
+import com.calderon.sf.commons.data.AccountTypeEnum;
 import com.calderon.sf.persistence.dto.AccountEntity;
 import org.testng.annotations.Test;
 

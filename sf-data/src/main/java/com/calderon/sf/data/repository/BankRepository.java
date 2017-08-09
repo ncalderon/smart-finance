@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface BankRepository extends CrudRepository<BankEntity, Integer> {
-    List<BankEntity> findByName(String name);
+    BankEntity findFirstByName(String name);
 }

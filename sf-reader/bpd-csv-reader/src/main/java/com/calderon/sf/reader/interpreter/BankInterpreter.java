@@ -1,8 +1,7 @@
 package com.calderon.sf.reader.interpreter;
 
-import com.calderon.sf.api.reader.Bank;
-import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
-
+import com.calderoncode.sf.reader.Bank;
+import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
 
 /**
  * Created by Nathaniel on 6/25/2017.

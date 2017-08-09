@@ -1,6 +1,6 @@
 package com.calderon.sf.persistence.dao;
 
-import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
+import com.calderon.sf.commons.data.TranStatusEnum;
 import com.calderon.sf.persistence.dto.AccountEntity;
 import com.calderon.sf.persistence.dto.BankEntity;
 import com.calderon.sf.persistence.dto.TransactionEntity;
@@ -8,15 +8,10 @@ import com.calderon.sf.persistence.util.HibernateHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.*;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.criteria.*;
 import javax.persistence.criteria.CriteriaQuery;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**

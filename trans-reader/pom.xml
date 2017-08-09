@@ -16,7 +16,7 @@
 
     <modules>
         <module>trans-reader-spec</module>
-        <module>bpd-csv-reader</module>
+        <!--<module>bpd-csv-reader</module>-->
     </modules>
 
     <dependencies>

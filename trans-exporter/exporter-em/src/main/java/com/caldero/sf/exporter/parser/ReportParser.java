@@ -1,6 +1,6 @@
 package com.caldero.sf.exporter.parser;
 
-import com.calderon.sf.commons.persistence.enums.TranMethodEnum;
+import com.calderon.sf.commons.data.TranMethodEnum;
 import com.calderon.sf.persistence.dao.CategoryDAO;
 import com.calderon.sf.persistence.dto.TransactionEntity;
 import com.calderon.sf.persistence.external.em.dto.ExpenseReportEntity;

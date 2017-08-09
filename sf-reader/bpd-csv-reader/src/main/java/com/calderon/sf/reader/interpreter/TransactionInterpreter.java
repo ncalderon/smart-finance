@@ -1,9 +1,9 @@
 package com.calderon.sf.reader.interpreter;
 
-import com.calderon.sf.api.reader.Transaction;
-import com.calderon.sf.api.reader.interpreter.BodyInterpreter;
 import com.calderon.sf.commons.data.TranTypeEnum;
-import com.calderon.sf.api.reader.Account;
+import com.calderoncode.sf.reader.Account;
+import com.calderoncode.sf.reader.Transaction;
+import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package com.calderon.sf.importer.parser;
 
-import com.calderon.sf.commons.persistence.enums.TranMethodEnum;
-import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
+import com.calderon.sf.commons.data.TranMethodEnum;
+import com.calderon.sf.commons.data.TranStatusEnum;
 import com.calderon.sf.importer.helpers.CategoryHelper;
 import com.calderon.sf.persistence.dto.TransactionEntity;
 

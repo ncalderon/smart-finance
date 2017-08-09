@@ -213,6 +213,7 @@ public class TransactionEntity extends AbstractEntity {
         this.tranCategoryByCategoryId = tranCategoryByCategoryId;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountEntity getAccountByAccountId() {

@@ -1,11 +1,12 @@
 package com.calderon.sf.reader;
 
-import com.calderon.sf.api.reader.Account;
-import com.calderon.sf.api.reader.Reader;
-import com.calderon.sf.api.reader.Transaction;
 import com.calderon.sf.reader.interpreter.AccountInterpreter;
 import com.calderon.sf.reader.interpreter.TransactionsInterpreter;
 import com.calderon.sf.reader.interpreter.AccountLinesInterpreter;
+import com.calderoncode.sf.reader.Account;
+import com.calderoncode.sf.reader.Reader;
+import com.calderoncode.sf.reader.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -35,6 +36,8 @@ public class CsvReader implements Reader {
     public CsvReader (Path source) {
         if (!Files.isRegularFile(source))
             throw new IllegalArgumentException("Source must be a real file.");
+        if(!source.getFileName().toString().endsWith(".csv"))
+            throw new IllegalArgumentException("Source file must be a CSV.");
         this.source = source;
         this.fileName = source.getFileName().toString().replaceAll("\\..*", "" );
     }

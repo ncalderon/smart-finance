@@ -1,6 +1,6 @@
 package com.calderon.sf.importer.helpers;
 
-import com.calderon.sf.commons.persistence.enums.AccountStatusEnum;
+import com.calderon.sf.commons.data.AccountStatusEnum;
 import com.calderon.sf.persistence.dao.AccountDAO;
 import com.calderon.sf.persistence.dto.AccountEntity;
 import com.calderon.sf.persistence.dto.BankEntity;

@@ -24,7 +24,7 @@ public class TranCategoryServiceImpl implements TranCategoryService {
     }
 
     public List<TranCategoryEntity> findChildren() {
-        return repository.findByParentIdIsNot(0);
+        return repository.findByParentIdIsNot(CATEGORIES_PARENT_ID);
     }
 
     public TranCategoryEntity findCategoryById(Integer id) {

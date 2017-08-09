@@ -1,6 +1,6 @@
 package com.calderon.sf.importer.helpers;
 
-import com.calderon.sf.commons.persistence.enums.TranTypeEnum;
+import com.calderon.sf.commons.data.TranTypeEnum;
 import com.calderon.sf.api.reader.Transaction;
 
 /**

@@ -2,7 +2,7 @@ package com.caldero.sf.exporter;
 
 import com.caldero.sf.exporter.parser.ReportParser;
 import com.calderon.sf.api.exporter.Exporter;
-import com.calderon.sf.commons.persistence.enums.TranStatusEnum;
+import com.calderon.sf.commons.data.TranStatusEnum;
 import com.calderon.sf.persistence.dao.TransactionDAO;
 import com.calderon.sf.persistence.dto.TransactionEntity;
 import com.calderon.sf.persistence.external.em.dao.ReportDAO;

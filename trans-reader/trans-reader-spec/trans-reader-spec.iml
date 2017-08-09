@@ -11,7 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="commons" />
+    <orderEntry type="library" name="Maven: com.calderon.sf:commons:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.8.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.8" level="project" />

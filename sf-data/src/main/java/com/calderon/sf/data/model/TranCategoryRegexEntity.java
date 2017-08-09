@@ -1,5 +1,7 @@
 package com.calderon.sf.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 /**
  * Created by Nathaniel on 6/17/2017.
@@ -77,6 +79,7 @@ public class TranCategoryRegexEntity {
         return result;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     public TranCategoryEntity getTranCategoryByCategoryId() {

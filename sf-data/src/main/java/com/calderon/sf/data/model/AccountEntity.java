@@ -173,7 +173,7 @@ public class AccountEntity extends AbstractEntity {
     }
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "status_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountStatusEntity getAccountStatusByStatusId() {
         return accountStatusByStatusId;
@@ -184,7 +184,7 @@ public class AccountEntity extends AbstractEntity {
     }
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "bank_id", referencedColumnName = "id", insertable = false, updatable = false)
     public BankEntity getBankByBankId() {
         return bankByBankId;
@@ -195,7 +195,7 @@ public class AccountEntity extends AbstractEntity {
     }
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id", insertable = false, updatable = false)
     public AccountTypeEntity getAccountTypeByTypeId() {
         return accountTypeByTypeId;

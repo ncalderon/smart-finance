@@ -4,19 +4,52 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
+
     <groupId>com.calderon.sf</groupId>
     <artifactId>smart-finance</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+    <properties>
+        <project.version>1.0</project.version>
+        <java.version>1.8</java.version>
+        <!--<spring.version>1.5.6.RELEASE</spring.version>-->
+        <!--<hibernate.version>5.2.10.Final</hibernate.version>-->
+    </properties>
     <modules>
-        <module>trans-persistence</module>
+        <!--<module>trans-persistence</module>
         <module>trans-persistence</module>
         <module>trans-exporter</module>
-        <module>commons</module>
+        <module>commons</module>-->
         <module>sf-web</module>
         <module>sf-data</module>
         <module>sf-importer</module>
+        <module>sf-reader</module>
+        <module>sf-reader</module>
+        <module>sf-commons</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

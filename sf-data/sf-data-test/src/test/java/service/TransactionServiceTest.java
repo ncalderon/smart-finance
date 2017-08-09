@@ -21,7 +21,7 @@ public class TransactionServiceTest extends AbstractBasicTest {
     @Test
     public void findOneByAccountIdAndTranNum() throws Exception {
         TransactionEntity transaction = service.findFirstByAccountIdAndTranNum(62, "65227397089030028000025");
-        System.out.println(transaction);
+        System.out.println(transaction.getTranStatusByStatusId());
         assertThat(transaction).isNotNull();
     }
 
@@ -39,7 +39,7 @@ public class TransactionServiceTest extends AbstractBasicTest {
         TransactionEntity transaction2 = service.findFirstByAccountIdAndTranNum(42, "74763947141014108294351");
         transaction2.setModified(parseLocalDate(LocalDate.now()));
         List<TransactionEntity> transactions = Arrays.asList(transaction1, transaction2);
-        service.saveTransactions(transactions);
+        service.save(transactions);
     }
 
     private static Timestamp parseLocalDate (LocalDate date) {

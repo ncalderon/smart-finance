@@ -1,5 +1,6 @@
 package com.calderon.sf.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
@@ -82,7 +83,7 @@ public class AccountStatusEntity {
         return result;
     }
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "accountStatusByStatusId", fetch = FetchType.LAZY)
     public Collection<AccountEntity> getAccountsById() {
         return accountsById;

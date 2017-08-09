@@ -1,6 +1,6 @@
 package com.calderon.sf.api.reader;
 
-import com.calderon.sf.commons.persistence.enums.TranTypeEnum;
+import com.calderon.sf.commons.data.TranTypeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
