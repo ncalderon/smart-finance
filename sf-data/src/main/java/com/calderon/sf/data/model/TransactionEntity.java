@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Entity
 @EntityListeners(AbstractEntityListener.class)
 @Table(name = "transaction", schema = "heroku_7847d3e246e99bb", catalog = "")
-public class TransactionEntity extends AbstractEntity {
+public class TransactionEntity extends AbstractEntity implements BasicEntity {
     private int id;
     private Timestamp created;
     private Timestamp modified;
@@ -168,7 +168,7 @@ public class TransactionEntity extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof TransactionEntity)) return false;
 
         TransactionEntity that = (TransactionEntity) o;
 

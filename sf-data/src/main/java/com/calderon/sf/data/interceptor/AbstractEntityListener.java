@@ -1,6 +1,6 @@
 package com.calderon.sf.data.interceptor;
 
-import com.calderon.sf.data.model.AbstractEntity;
+import com.calderon.sf.data.model.BasicEntity;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -12,12 +12,12 @@ import java.time.Instant;
  */
 public class AbstractEntityListener {
     @PrePersist
-    public void beforeCreate (AbstractEntity abstractEntity) {
-        abstractEntity.setModified(Timestamp.from(Instant.now()));
-        abstractEntity.setCreated(Timestamp.from(Instant.now()));
+    public void beforeCreate (BasicEntity entity) {
+        entity.setModified(Timestamp.from(Instant.now()));
+        entity.setCreated(Timestamp.from(Instant.now()));
     }
     @PreUpdate
-    public void beforeUpdate (AbstractEntity abstractEntity) {
-        abstractEntity.setModified(Timestamp.from(Instant.now()));
+    public void beforeUpdate (BasicEntity entity) {
+        entity.setModified(Timestamp.from(Instant.now()));
     }
 }

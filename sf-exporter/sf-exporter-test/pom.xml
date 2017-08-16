@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sf-exporter</artifactId>
+        <groupId>com.calderon.sf</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sf-exporter-test</artifactId>
+
+    <properties>
+        <!--<release-train>Ingalls-SR5</release-train>-->
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <mysql.version>6.0.6</mysql.version>
+        <sqlite-jdbc.version>3.18.0</sqlite-jdbc.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.enigmabridge</groupId>
+            <artifactId>hibernate4-sqlite-dialect</artifactId>
+            <version>0.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.calderon.sf</groupId>
+            <artifactId>sf-db-exporter</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.calderon.sf</groupId>
+            <artifactId>em-dbwriter</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+</project>

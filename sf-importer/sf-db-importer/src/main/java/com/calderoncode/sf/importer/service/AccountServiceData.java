@@ -1,14 +1,12 @@
 package com.calderoncode.sf.importer.service;
 
-import com.calderon.sf.commons.data.AccountStatusEnum;
 import com.calderon.sf.data.model.AccountEntity;
 import com.calderon.sf.data.model.BankEntity;
 import com.calderon.sf.data.service.AccountService;
-import com.calderoncode.sf.reader.Account;
-import com.calderoncode.sf.reader.Bank;
+import com.calderoncode.sf.transport.Account;
+import com.calderoncode.sf.transport.AccountStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

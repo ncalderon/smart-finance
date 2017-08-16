@@ -32,6 +32,9 @@
         <module>sf-reader</module>
         <module>sf-reader</module>
         <module>sf-commons</module>
+        <module>sf-exporter</module>
+        <module>sf-writer</module>
+        <module>sf-transport</module>
     </modules>
 
     <dependencies>

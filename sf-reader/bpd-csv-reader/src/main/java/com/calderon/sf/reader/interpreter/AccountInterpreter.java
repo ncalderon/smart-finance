@@ -1,8 +1,9 @@
 package com.calderon.sf.reader.interpreter;
 
-import com.calderon.sf.commons.data.AccountTypeEnum;
-import com.calderoncode.sf.reader.Account;
+
 import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
+import com.calderoncode.sf.transport.Account;
+import com.calderoncode.sf.transport.AccountTypeEnum;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

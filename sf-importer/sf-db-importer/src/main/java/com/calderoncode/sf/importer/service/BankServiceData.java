@@ -2,12 +2,11 @@ package com.calderoncode.sf.importer.service;
 
 
 import com.calderon.sf.data.model.BankEntity;
-import com.calderon.sf.data.repository.BankRepository;
 import com.calderon.sf.data.service.BankService;
-import com.calderoncode.sf.reader.Bank;
+
+import com.calderoncode.sf.transport.Bank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 

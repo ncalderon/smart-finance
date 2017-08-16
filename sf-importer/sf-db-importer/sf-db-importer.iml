@@ -31,8 +31,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
     <orderEntry type="module" module-name="sf-importer-spec" />
     <orderEntry type="module" module-name="sf-reader-spec" />
-    <orderEntry type="module" module-name="sf-data" />
     <orderEntry type="module" module-name="sf-commons" />
+    <orderEntry type="module" module-name="sf-data" />
+    <orderEntry type="module" module-name="sf-transport" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.5.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.10" level="project" />

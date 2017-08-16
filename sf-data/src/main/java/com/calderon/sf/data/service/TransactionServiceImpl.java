@@ -1,8 +1,8 @@
 package com.calderon.sf.data.service;
 
-import com.calderon.sf.commons.data.TranStatusEnum;
 import com.calderon.sf.data.model.TransactionEntity;
 import com.calderon.sf.data.repository.TransactionRepository;
+import com.calderoncode.sf.transport.TranStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

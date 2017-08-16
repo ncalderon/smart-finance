@@ -6,6 +6,7 @@ package com.calderon.sf.data.test;
 /*import com.calderon.sf.web.data.repository.AccountRepository;
 import com.calderon.sf.web.data.repository.BankRepository;*/
 
+import com.calderon.sf.data.configurator.DataConfigurator;
 import com.calderon.sf.data.service.AccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,15 +18,19 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //@EnableJpaRepositories(basePackages = "com.calderon.sf.data.repository")
 //@SpringBootApplication(scanBasePackages = "com.calderon.sf.data")
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.calderon.sf.data")
+/*@Import(DataConfigurator.class)*/
+@ComponentScan(basePackages = "com.calderon.sf")
+/*
 @EntityScan(basePackages = "com.calderon.sf.data.model")
 @EnableJpaRepositories(basePackages = "com.calderon.sf.data.repository")
+*/
 public class Application implements ApplicationRunner{
 
     /*@Qualifier("dataSource")

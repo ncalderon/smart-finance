@@ -3,10 +3,10 @@ package com.calderon.sf.reader;
 import com.calderon.sf.reader.interpreter.AccountInterpreter;
 import com.calderon.sf.reader.interpreter.TransactionsInterpreter;
 import com.calderon.sf.reader.interpreter.AccountLinesInterpreter;
-import com.calderoncode.sf.reader.Account;
+
 import com.calderoncode.sf.reader.Reader;
-import com.calderoncode.sf.reader.Transaction;
-import org.springframework.stereotype.Component;
+import com.calderoncode.sf.transport.Account;
+import com.calderoncode.sf.transport.Transaction;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -69,7 +69,7 @@ public class CsvReader implements Reader {
     }
 
     private void orderTransByDate(){
-        Collections.sort(transactions, Comparator.comparing(Transaction::getPostDate));
+        Collections.sort(transactions, Comparator.comparing(Transaction::getTranPostDate));
     }
 
     @Override

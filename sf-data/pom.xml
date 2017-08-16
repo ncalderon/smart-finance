@@ -53,7 +53,7 @@
     <dependencies>
         <dependency>
             <groupId>com.calderon.sf</groupId>
-            <artifactId>sf-commons</artifactId>
+            <artifactId>sf-transport</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
@@ -88,13 +88,13 @@
 
     </dependencies>
 
-    <build>
+    <!--<build>
         <plugins>
-            <!-- Package as an executable jar/war -->
+            &lt;!&ndash; Package as an executable jar/war &ndash;&gt;
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>

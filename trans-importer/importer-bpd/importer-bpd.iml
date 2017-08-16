@@ -28,6 +28,7 @@
     <orderEntry type="module" module-name="bpd-csv-reader" />
     <orderEntry type="module" module-name="sf-reader-spec" />
     <orderEntry type="module" module-name="sf-commons" />
+    <orderEntry type="module" module-name="sf-transport" />
     <orderEntry type="library" name="Maven: com.calderon.sf:commons:1.0" level="project" />
     <orderEntry type="library" name="Maven: com.calderon.sf:sf-persistence:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.0.12.Final" level="project" />

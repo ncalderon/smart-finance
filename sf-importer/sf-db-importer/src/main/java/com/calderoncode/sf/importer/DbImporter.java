@@ -8,7 +8,7 @@ import com.calderoncode.sf.importer.service.AccountServiceData;
 import com.calderoncode.sf.importer.service.BankServiceData;
 import com.calderoncode.sf.importer.parser.TransactionParser;
 import com.calderoncode.sf.reader.Reader;
-import com.calderoncode.sf.reader.Transaction;
+import com.calderoncode.sf.transport.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

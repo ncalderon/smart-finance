@@ -1,5 +1,8 @@
 package com.calderoncode.sf.reader;
 
+import com.calderoncode.sf.transport.Account;
+import com.calderoncode.sf.transport.Transaction;
+
 import java.util.List;
 
 /**

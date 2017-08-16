@@ -1,9 +1,8 @@
 package com.calderon.sf.reader.interpreter;
 
-import com.calderon.sf.commons.data.TranTypeEnum;
-import com.calderoncode.sf.reader.Account;
-import com.calderoncode.sf.reader.Transaction;
+
 import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
+import com.calderoncode.sf.transport.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -35,14 +34,17 @@ public class TransactionInterpreter implements BodyInterpreter<Transaction> {
     public Transaction interpret() {
         LocalDate created = LocalDate.parse(account.getCreated().getYear() + "/" +tranValues[POST_DATE_INDEX], DateTimeFormatter.ofPattern("yyyy/dd/MM"));
         TranTypeEnum type = tranValues[TYPE_INDEX].equals(TranTypeEnum.DEBIT.codename())? TranTypeEnum.DEBIT: TranTypeEnum.CREDIT;
+        TranCategoryEnum category = type == TranTypeEnum.DEBIT? TranCategoryEnum.INCOME: TranCategoryEnum.EXPENSE;
         return new Transaction.Builder()
-                .setPostDate(created)
+                .setTranPostDate(created)
                 .setAccount(account)
                 .setType(type)
-                .setAmount(new BigDecimal(tranValues[AMOUNT_INDEX]))
-                .setReferenceNumber(tranValues[REFERENCE_NUMBER_INDEX])
-                .setSerialNumber(tranValues[SERIAL_NUMBER_INDEX])
-                .setDescription(tranValues[DESCRIPTION_INDEX])
+                .setTranAmount(new BigDecimal(tranValues[AMOUNT_INDEX]))
+                .setTranRefNum(tranValues[REFERENCE_NUMBER_INDEX])
+                .setTranNum(tranValues[SERIAL_NUMBER_INDEX])
+                .setTranDesc(tranValues[DESCRIPTION_INDEX])
+                .setCategory(category)
+                .setTranMethod(TranMethodEnum.DEFAULT)
                 .build();
     }
 }
