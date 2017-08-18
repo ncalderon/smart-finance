@@ -2,6 +2,8 @@ package com.calderon.sf.exporter.test;
 
 import com.calderon.sf.data.service.BankService;
 
+import com.calderon.sf.em.data.model.ExpenseReportEntity;
+import com.calderon.sf.em.data.service.ExpenseReportService;
 import com.calderon.sf.exporter.DbExporter;
 import com.calderon.sf.exporter.Exporter;
 import com.calderoncode.sf.writer.Writer;
@@ -17,9 +19,10 @@ public class ExporterTest extends AbstractBasicTest {
     private Exporter exporter;
     @Autowired
     private Writer writer;
-    /*@Autowired*/
-    /*private ExpenseReportService service;*/
-    /*private BankService service;*/
+    /*@Autowired
+    private ExpenseReportService service;*/
+    @Autowired
+    private BankService service;
     @Test
     public void doExport(){
         /*assertThat(writer).isNotNull();
@@ -28,8 +31,8 @@ public class ExporterTest extends AbstractBasicTest {
         /*List<ExpenseReportEntity> list = service.findByAccount("Gold RD");
         assertThat(list).isNotNull();
         System.out.println(list);*/
-        /*assertThat(service.findFirstByName("Banco Popular Dominicano")).isNotNull();*/
-        assertThat(exporter).isNotNull();
-        exporter.doExport(writer);
+        assertThat(service.findFirstByName("Banco Popular Dominicano")).isNotNull();
+        /*assertThat(exporter).isNotNull();
+        exporter.doExport(writer);*/
     }
 }

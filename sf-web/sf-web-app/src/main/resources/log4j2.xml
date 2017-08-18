@@ -2,7 +2,7 @@
 <Configuration status="INFO">
     <Properties>
         <Property name="log-path">logs/rolling</Property>
-        <Property name="archive">${log-path}/importer-bpd.log</Property>
+        <Property name="archive">${log-path}/sf-web-app.log</Property>
     </Properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">

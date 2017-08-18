@@ -16,11 +16,11 @@ import java.util.List;
  * Created by nathaniel on 7/11/2017.
  */
 @Controller
-
 public class GreetingController {
 
     @Autowired
     private AccountService service;
+
     @RequestMapping("/greeting")
     public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
@@ -29,7 +29,7 @@ public class GreetingController {
 
     @RequestMapping("/test")
     @ResponseBody()
-    public List<AccountEntity> test() {
-        return service.findByAccName("Gold RD");
+    public AccountEntity test() {
+        return service.findOneByAccNumAndAccName("1928","Gold RD");
     }
 }
