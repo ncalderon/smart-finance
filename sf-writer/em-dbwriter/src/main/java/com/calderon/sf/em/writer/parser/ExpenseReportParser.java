@@ -24,7 +24,7 @@ public class ExpenseReportParser {
         report.setAmount(tran.getTranAmount().toString());
         report.setStatus(defaultStatus);
         report.setProperty4(defaultProperty4);
-        report.setReferenceNumber(tran.getTranRefNum());
+        report.setReferenceNumber(tran.getTranNum());
         return report;
     }
 }
