@@ -21,4 +21,9 @@ public class AccountServiceImpl implements AccountService {
     public AccountEntity findOneByAccNumAndAccName(String accNum, String accName) {
         return accountRepository.findOneByAccNumAndAccName(accNum, accName);
     }
+
+    @Override
+    public List<AccountEntity> findAll() {
+        return accountRepository.findAll();
+    }
 }

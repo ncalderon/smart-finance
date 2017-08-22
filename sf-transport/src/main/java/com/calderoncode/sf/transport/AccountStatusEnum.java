@@ -15,4 +15,8 @@ public enum AccountStatusEnum {
     public int id() {
         return id;
     }
+
+    public int getId() {
+        return id;
+    }
 }

@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layouts/header :: header">
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" th:href="@{../vendor/datatables-responsive/dataTables.responsive.css}" />
 </head>
 <body>
+
+    <div id="wrapper">
+        <div th:replace="layouts/navbar :: navbar" />
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Account Maintenance</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="account.html" th:if="${viewState == 'VIEW'? true: false}" th:href="@{/account/new}">New</a>
+                        <a href="account.html" th:if="${viewState == 'CREATE'? true: false}" th:href="@{/account}">Back</a>
+                    </div>
+                </div>
+                <div class="row" th:if="${viewState == 'CREATE'? true: false}" th:include="fragments/account/create :: account-create"/>
+                <div class="row" th:if="${viewState == 'VIEW'? true: false}" th:include="fragments/account/list :: account-list">
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+
+    <div th:replace="layouts/body :: body" />
+    <div th:replace="fragments/account/list :: account-bottom" />
 
 </body>
 </html>

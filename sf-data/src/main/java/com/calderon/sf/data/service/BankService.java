@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BankService {
     BankEntity findFirstByName(String name);
+    List<BankEntity> findAll();
 }

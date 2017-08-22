@@ -18,4 +18,9 @@ public class BankServiceImpl implements BankService {
     public BankEntity findFirstByName(String name) {
         return repository.findFirstByName(name);
     }
+
+    @Override
+    public List<BankEntity> findAll() {
+        return repository.findAll();
+    }
 }

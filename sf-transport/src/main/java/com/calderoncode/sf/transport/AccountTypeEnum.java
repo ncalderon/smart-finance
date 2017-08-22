@@ -16,6 +16,10 @@ public enum AccountTypeEnum {
         return id;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public static AccountTypeEnum from (int id){
         switch (id){
             case 2:

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface BankRepository extends CrudRepository<BankEntity, Integer> {
     BankEntity findFirstByName(String name);
+    List<BankEntity> findAll();
 }

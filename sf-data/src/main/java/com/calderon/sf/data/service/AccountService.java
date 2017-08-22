@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface AccountService {
     AccountEntity findOneByAccNumAndAccName(String accNum, String accName);
+
+    List<AccountEntity> findAll();
 }
