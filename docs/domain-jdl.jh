@@ -1,0 +1,97 @@
+
+enum AccountStatus {
+	INACTIVE, ACTIVE, DISABLED
+}
+
+enum AccountType {
+	DEFAULT, CREDIT_CARD
+}
+
+entity Account {
+	id Long,
+	status AccountStatus,
+    type AccountType,
+    number String,
+    description String,
+    balance BigDecimal
+}
+
+entity Bank {
+	id Long,
+    name String,
+    description String
+}
+
+entity TranCategory {
+	id Long,
+    parentId Long,
+    name String,
+    description String
+}
+
+entity TranCategoryRegex {
+	id Long,
+    name String,
+    description String,
+    regex String
+}
+
+enum TranStatus {
+	PENDING, EXPORTED, DELETED
+}
+
+enum TranType {
+	DB, CR
+}
+
+enum TranMethod {
+	DEFAULT
+}
+
+entity Transaction {
+	id Long,
+    status TranStatus,
+    type TranType,
+   	number String,
+    referenceNumber String,
+    postDate Instant,
+    description String,
+    amount BigDecimal
+    method TranMethod
+}
+
+relationship OneToMany {
+	Bank{account} to Account
+}
+
+
+relationship OneToOne {
+	Account{bank} to Bank
+}
+
+relationship OneToMany {
+	Account{transaction} to Transaction
+}
+
+relationship OneToOne {
+	TranCategory{regex} to TranCategoryRegex
+}
+
+relationship ManyToOne {
+	TranCategory{parent} to TranCategory
+}
+
+relationship OneToMany {
+	TranCategoryRegex{category} to TranCategory
+}
+
+relationship OneToMany {
+	TranCategory{transaction} to Transaction
+}
+
+relationship OneToOne {
+	Transaction{category} to TranCategory,
+    Transaction{account} to Account
+}
+
+paginate Transaction, Account, Bank, Category, TranCategoryRegex with pagination
