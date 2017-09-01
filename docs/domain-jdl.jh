@@ -1,3 +1,45 @@
+entity Account {
+	id Long,
+	status AccountStatus required,
+    type AccountType required,
+    number String required,
+    description String,
+    balance BigDecimal
+}
+
+entity Bank {
+	id Long,
+    name String required,
+    description String
+}
+
+entity TranCategory {
+	id Long,
+    parentId Long,
+    name String required,
+    description String
+}
+
+entity TranCategoryRegex {
+	id Long,
+    name String required,
+    description String,
+    regex String
+}
+
+
+
+entity Transaction {
+	id Long,
+    status TranStatus required,
+    type TranType required,
+   	number String required,
+    referenceNumber String,
+    postDate Instant required,
+    description String,
+    amount BigDecimal required,
+    method TranMethod required
+}
 
 enum AccountStatus {
 	INACTIVE, ACTIVE, DISABLED
@@ -5,35 +47,6 @@ enum AccountStatus {
 
 enum AccountType {
 	DEFAULT, CREDIT_CARD
-}
-
-entity Account {
-	id Long,
-	status AccountStatus,
-    type AccountType,
-    number String,
-    description String,
-    balance BigDecimal
-}
-
-entity Bank {
-	id Long,
-    name String,
-    description String
-}
-
-entity TranCategory {
-	id Long,
-    parentId Long,
-    name String,
-    description String
-}
-
-entity TranCategoryRegex {
-	id Long,
-    name String,
-    description String,
-    regex String
 }
 
 enum TranStatus {
@@ -46,18 +59,6 @@ enum TranType {
 
 enum TranMethod {
 	DEFAULT
-}
-
-entity Transaction {
-	id Long,
-    status TranStatus,
-    type TranType,
-   	number String,
-    referenceNumber String,
-    postDate Instant,
-    description String,
-    amount BigDecimal
-    method TranMethod
 }
 
 relationship OneToMany {
