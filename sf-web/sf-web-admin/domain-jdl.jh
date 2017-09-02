@@ -1,12 +1,92 @@
 entity BankAccount {
-	status AccountStatus,
-    type AccountType
+	status AccountStatus required,
+    type AccountType required,
+    number String required,
+    description String,
+    balance BigDecimal
 }
 
-enum BankAccountStatus {
+entity Bank {
+    name String required,
+    description String
+}
+
+entity TranCategory {
+    name String required,
+    description String
+}
+
+entity TranCategoryRegex {
+    name String required,
+    description String,
+    regex String
+}
+
+
+
+entity Transaction {
+    status TranStatus required,
+    type TranType required,
+   	number String required,
+    referenceNumber String,
+    postDate Instant required,
+    description String,
+    amount BigDecimal required,
+    method TranMethod required
+}
+
+enum AccountStatus {
 	INACTIVE, ACTIVE, DISABLED
 }
 
-enum BankAccountType {
+enum AccountType {
 	DEFAULT, CREDIT_CARD
 }
+
+enum TranStatus {
+	PENDING, EXPORTED, DELETED
+}
+
+enum TranType {
+	DB, CR
+}
+
+enum TranMethod {
+	DEFAULT
+}
+
+relationship OneToMany {
+	Bank{account} to Account
+}
+
+
+relationship OneToOne {
+	Account{bank} to Bank
+}
+
+relationship OneToMany {
+	Account{transaction} to Transaction
+}
+
+relationship OneToOne {
+	TranCategory{regex} to TranCategoryRegex
+}
+
+relationship ManyToOne {
+	TranCategory{parent} to TranCategory
+}
+
+relationship OneToMany {
+	TranCategoryRegex{category} to TranCategory
+}
+
+relationship OneToMany {
+	TranCategory{transaction} to Transaction
+}
+
+relationship OneToOne {
+	Transaction{category} to TranCategory,
+    Transaction{bankAccount} to BankAccount
+}
+
+paginate Transaction, BankAccount, Bank, Category, TranCategoryRegex with pagination

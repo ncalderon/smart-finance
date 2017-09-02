@@ -1,5 +1,4 @@
-entity Account {
-	id Long,
+entity BankAccount {
 	status AccountStatus required,
     type AccountType required,
     number String required,
@@ -8,20 +7,16 @@ entity Account {
 }
 
 entity Bank {
-	id Long,
     name String required,
     description String
 }
 
 entity TranCategory {
-	id Long,
-    parentId Long,
     name String required,
     description String
 }
 
 entity TranCategoryRegex {
-	id Long,
     name String required,
     description String,
     regex String
@@ -30,7 +25,6 @@ entity TranCategoryRegex {
 
 
 entity Transaction {
-	id Long,
     status TranStatus required,
     type TranType required,
    	number String required,
