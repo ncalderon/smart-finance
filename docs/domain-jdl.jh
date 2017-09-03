@@ -1,40 +1,3 @@
-entity BankAccount {
-	status AccountStatus required,
-    type AccountType required,
-    number String required,
-    description String,
-    balance BigDecimal
-}
-
-entity Bank {
-    name String required,
-    description String
-}
-
-entity TranCategory {
-    name String required,
-    description String
-}
-
-entity TranCategoryRegex {
-    name String required,
-    description String,
-    regex String
-}
-
-
-
-entity Transaction {
-    status TranStatus required,
-    type TranType required,
-   	number String required,
-    referenceNumber String,
-    postDate Instant required,
-    description String,
-    amount BigDecimal required,
-    method TranMethod required
-}
-
 enum AccountStatus {
 	INACTIVE, ACTIVE, DISABLED
 }
@@ -55,17 +18,41 @@ enum TranMethod {
 	DEFAULT
 }
 
+entity BankAccount {
+	accountStatus AccountStatus required,
+    accountType AccountType required,
+    accountNumber String required,
+    description String,
+    balance BigDecimal
+}
+
+entity Bank {
+    name String required,
+    description String
+}
+
 relationship OneToMany {
-	Bank{account} to Account
+	Bank{accounts} to BankAccount
 }
 
 
 relationship OneToOne {
-	Account{bank} to Bank
+	BankAccount{bank} to Bank
 }
 
 relationship OneToMany {
-	Account{transaction} to Transaction
+	BankAccount{transaction} to Transaction
+}
+
+entity TranCategory {
+    name String required,
+    description String
+}
+
+entity TranCategoryRegex {
+    name String required,
+    description String,
+    regex String
 }
 
 relationship OneToOne {
@@ -80,13 +67,24 @@ relationship OneToMany {
 	TranCategoryRegex{category} to TranCategory
 }
 
+entity Transaction {
+    tranStatus TranStatus required,
+    tranType TranType required,
+   	tranNumber String required,
+    referenceNumber String,
+    postDate Instant required,
+    description String,
+    amount BigDecimal required,
+    tranMethod TranMethod required
+}
+
 relationship OneToMany {
 	TranCategory{transaction} to Transaction
 }
 
 relationship OneToOne {
 	Transaction{category} to TranCategory,
-    Transaction{account} to Account
+    Transaction{bankAccount} to BankAccount
 }
 
-paginate Transaction, Account, Bank, Category, TranCategoryRegex with pagination
+paginate Transaction, BankAccount, Bank, Category, TranCategoryRegex with pagination
