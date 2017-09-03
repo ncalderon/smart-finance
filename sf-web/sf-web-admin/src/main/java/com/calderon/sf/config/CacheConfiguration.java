@@ -44,6 +44,11 @@ public class CacheConfiguration {
             cm.createCache(com.calderon.sf.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.calderon.sf.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.calderon.sf.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.calderon.sf.domain.BankAccount.class.getName(), jcacheConfiguration);
+            cm.createCache(com.calderon.sf.domain.Bank.class.getName(), jcacheConfiguration);
+            cm.createCache(com.calderon.sf.domain.TranCategory.class.getName(), jcacheConfiguration);
+            cm.createCache(com.calderon.sf.domain.TranCategoryRegex.class.getName(), jcacheConfiguration);
+            cm.createCache(com.calderon.sf.domain.AccountTransaction.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

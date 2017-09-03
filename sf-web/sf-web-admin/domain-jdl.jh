@@ -31,17 +31,8 @@ entity Bank {
     description String
 }
 
-relationship OneToMany {
-	Bank{accounts} to BankAccount
-}
-
-
 relationship OneToOne {
 	BankAccount{bank} to Bank
-}
-
-relationship OneToMany {
-	BankAccount{transaction} to Transaction
 }
 
 entity TranCategory {
@@ -52,22 +43,19 @@ entity TranCategory {
 entity TranCategoryRegex {
     name String required,
     description String,
-    regex String
+    categoryRegex String
 }
 
+
 relationship OneToOne {
-	TranCategory{regex} to TranCategoryRegex
+	TranCategory{categoryRegex} to TranCategoryRegex
 }
 
 relationship ManyToOne {
 	TranCategory{parent} to TranCategory
 }
 
-relationship OneToMany {
-	TranCategoryRegex{category} to TranCategory
-}
-
-entity Transaction {
+entity AccountTransaction {
     tranStatus TranStatus required,
     tranType TranType required,
    	tranNumber String required,
@@ -78,13 +66,10 @@ entity Transaction {
     tranMethod TranMethod required
 }
 
-relationship OneToMany {
-	TranCategory{transaction} to Transaction
-}
-
 relationship OneToOne {
-	Transaction{category} to TranCategory,
-    Transaction{bankAccount} to BankAccount
+	AccountTransaction{tranCategory} to TranCategory,
+    AccountTransaction{bankAccount} to BankAccount
 }
 
-paginate Transaction, BankAccount, Bank, Category, TranCategoryRegex with pagination
+paginate AccountTransaction, BankAccount, Bank, TranCategory, TranCategoryRegex with pagination
+

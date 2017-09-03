@@ -1,0 +1,10 @@
+{
+    "sfWebAdminApp": {
+        "TranStatus" : {
+            "null": "",
+            "PENDING": "PENDING",
+            "EXPORTED": "EXPORTED",
+            "DELETED": "DELETED"
+        }
+    }
+}

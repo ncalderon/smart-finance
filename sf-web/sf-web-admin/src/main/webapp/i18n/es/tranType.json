@@ -1,0 +1,9 @@
+{
+    "sfWebAdminApp": {
+        "TranType" : {
+            "null": "",
+            "DB": "DB",
+            "CR": "CR"
+        }
+    }
+}

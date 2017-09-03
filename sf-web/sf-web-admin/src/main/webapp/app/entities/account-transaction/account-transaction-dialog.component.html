@@ -1,0 +1,131 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAccountTransactionLabel" jhiTranslate="sfWebAdminApp.accountTransaction.home.createOrEditLabel">Create or edit a Account Transaction</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!accountTransaction.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="accountTransaction.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.tranStatus" for="field_tranStatus">Tran Status</label>
+            <select class="form-control" name="tranStatus" [(ngModel)]="accountTransaction.tranStatus" id="field_tranStatus"  required>
+                <option value="PENDING">{{'sfWebAdminApp.TranStatus.PENDING' | translate}}</option>
+                <option value="EXPORTED">{{'sfWebAdminApp.TranStatus.EXPORTED' | translate}}</option>
+                <option value="DELETED">{{'sfWebAdminApp.TranStatus.DELETED' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.tranStatus?.dirty && editForm.controls.tranStatus?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tranStatus?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.tranType" for="field_tranType">Tran Type</label>
+            <select class="form-control" name="tranType" [(ngModel)]="accountTransaction.tranType" id="field_tranType"  required>
+                <option value="DB">{{'sfWebAdminApp.TranType.DB' | translate}}</option>
+                <option value="CR">{{'sfWebAdminApp.TranType.CR' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.tranType?.dirty && editForm.controls.tranType?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tranType?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.tranNumber" for="field_tranNumber">Tran Number</label>
+            <input type="text" class="form-control" name="tranNumber" id="field_tranNumber"
+                [(ngModel)]="accountTransaction.tranNumber" required />
+            <div [hidden]="!(editForm.controls.tranNumber?.dirty && editForm.controls.tranNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tranNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.referenceNumber" for="field_referenceNumber">Reference Number</label>
+            <input type="text" class="form-control" name="referenceNumber" id="field_referenceNumber"
+                [(ngModel)]="accountTransaction.referenceNumber"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.postDate" for="field_postDate">Post Date</label>
+            <div class="d-flex">
+                <input id="field_postDate" type="datetime-local" class="form-control" name="postDate" [(ngModel)]="accountTransaction.postDate"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.postDate?.dirty && editForm.controls.postDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.postDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.postDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="accountTransaction.description"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="accountTransaction.amount" required />
+            <div [hidden]="!(editForm.controls.amount?.dirty && editForm.controls.amount?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.amount?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.amount?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.tranMethod" for="field_tranMethod">Tran Method</label>
+            <select class="form-control" name="tranMethod" [(ngModel)]="accountTransaction.tranMethod" id="field_tranMethod"  required>
+                <option value="DEFAULT">{{'sfWebAdminApp.TranMethod.DEFAULT' | translate}}</option>
+            </select>
+            <div [hidden]="!(editForm.controls.tranMethod?.dirty && editForm.controls.tranMethod?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.tranMethod?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.tranCategory" for="field_tranCategory">Tran Category</label>
+            <select class="form-control" id="field_tranCategory" name="tranCategory" [(ngModel)]="accountTransaction.tranCategory">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="tranCategoryOption.id === accountTransaction.tranCategory?.id ? accountTransaction.tranCategory : tranCategoryOption" *ngFor="let tranCategoryOption of trancategories; trackBy: trackTranCategoryById">{{tranCategoryOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebAdminApp.accountTransaction.bankAccount" for="field_bankAccount">Bank Account</label>
+            <select class="form-control" id="field_bankAccount" name="bankAccount" [(ngModel)]="accountTransaction.bankAccount">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bankAccountOption.id === accountTransaction.bankAccount?.id ? accountTransaction.bankAccount : bankAccountOption" *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
