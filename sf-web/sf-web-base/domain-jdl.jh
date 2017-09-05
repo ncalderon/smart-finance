@@ -4,7 +4,6 @@ DEFAULT_MAX_LENGTH = 64
 
 DEFAULT_DESC_MAX_LENGTH = 512
 
-
 DEFAULT_MIN_BYTES = 20
 DEFAULT_MAX_BYTES = 40
 DEFAULT_MIN = 0
@@ -36,13 +35,13 @@ entity BankAccount {
     accountType AccountType required,
     accountNumber String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
     name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
-    description String maxlength(DEFAULT_DESC_LENGTH),
+    description String maxlength(DEFAULT_DESC_MAX_LENGTH),
     balance BigDecimal
 }
 
 entity Bank {
     name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
-    description String maxlength(DEFAULT_DESC_LENGTH)
+    description String maxlength(DEFAULT_DESC_MAX_LENGTH)
 }
 
 relationship OneToMany {
@@ -60,12 +59,12 @@ relationship OneToMany {
 
 entity TranCategory {
     name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
-    description String maxlength(DEFAULT_DESC_LENGTH)
+    description String maxlength(DEFAULT_DESC_MAX_LENGTH)
 }
 
 entity TranCategoryRegex {
     name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
-    description String maxlength(DEFAULT_DESC_LENGTH),
+    description String maxlength(DEFAULT_DESC_MAX_LENGTH),
     regex String required
 }
 
@@ -91,7 +90,7 @@ entity AccountTransaction {
    	tranNumber String required minlength(1) maxlength(128),
     referenceNumber String,
     postDate Instant required,
-    description String maxlength(DEFAULT_DESC_LENGTH),
+    description String maxlength(DEFAULT_DESC_MAX_LENGTH),
     amount BigDecimal required,
     tranMethod TranMethod required
 }
