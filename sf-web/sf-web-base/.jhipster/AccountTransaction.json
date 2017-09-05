@@ -1,0 +1,87 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "bankAccount",
+            "otherEntityName": "bankAccount",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "tranCategory",
+            "otherEntityName": "tranCategory",
+            "otherEntityField": "name"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "tranStatus",
+            "fieldType": "TranStatus",
+            "fieldValues": "PENDING,EXPORTED,DELETED",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tranType",
+            "fieldType": "TranType",
+            "fieldValues": "DB,CR",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tranNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": 1,
+            "fieldValidateRulesMaxlength": 128
+        },
+        {
+            "fieldName": "referenceNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postDate",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 512
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tranMethod",
+            "fieldType": "TranMethod",
+            "fieldValues": "DEFAULT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170905140246",
+    "entityTableName": "account_transaction",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no"
+}

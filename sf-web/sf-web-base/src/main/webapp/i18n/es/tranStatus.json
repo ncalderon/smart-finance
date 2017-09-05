@@ -1,0 +1,10 @@
+{
+    "sfWebBaseApp": {
+        "TranStatus" : {
+            "null": "",
+            "PENDING": "PENDING",
+            "EXPORTED": "EXPORTED",
+            "DELETED": "DELETED"
+        }
+    }
+}
