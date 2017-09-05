@@ -11,7 +11,7 @@ DEFAULT_MAX = 41
 
 
 enum AccountStatus {
-	INACTIVE, ACTIVE
+	INACTIVE, ACTIVE, DISABLED
 }
 
 enum AccountType {
@@ -99,4 +99,11 @@ relationship OneToMany {
 	TranCategory{transaction} to AccountTransaction{tranCategory(name) required}
 }
 
+relationship ManyToOne {
+	AccountTransaction{user(login)} to User,
+    BankAccount{user(login)} to User,
+    Bank{user(login)} to User,
+    TranCategory{user(login)} to User,
+    TranCategoryRegex{user(login)} to User
+}
 paginate AccountTransaction, BankAccount, Bank, TranCategory, TranCategoryRegex with pagination
