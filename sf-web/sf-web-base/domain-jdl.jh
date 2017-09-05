@@ -34,14 +34,14 @@ enum TranMethod {
 entity BankAccount {
 	accountStatus AccountStatus required,
     accountType AccountType required,
-    accountNumber String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required,
-    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required
+    accountNumber String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
+    name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
     description String maxlength(DEFAULT_DESC_LENGTH),
     balance BigDecimal
 }
 
 entity Bank {
-    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required,
+    name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
     description String maxlength(DEFAULT_DESC_LENGTH)
 }
 
@@ -59,12 +59,12 @@ relationship OneToMany {
 }
 
 entity TranCategory {
-    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required,
+    name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
     description String maxlength(DEFAULT_DESC_LENGTH)
 }
 
 entity TranCategoryRegex {
-    name String minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH) required,
+    name String required minlength(DEFAULT_MIN_LENGTH) maxlength(DEFAULT_MAX_LENGTH),
     description String maxlength(DEFAULT_DESC_LENGTH),
     regex String required
 }
