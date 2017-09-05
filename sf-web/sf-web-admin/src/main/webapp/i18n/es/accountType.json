@@ -1,9 +1,0 @@
-{
-    "sfWebAdminApp": {
-        "AccountType" : {
-            "null": "",
-            "DEFAULT": "DEFAULT",
-            "CREDIT_CARD": "CREDIT_CARD"
-        }
-    }
-}
