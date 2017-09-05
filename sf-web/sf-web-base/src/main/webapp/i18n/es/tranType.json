@@ -1,9 +1,0 @@
-{
-    "sfWebBaseApp": {
-        "TranType" : {
-            "null": "",
-            "EXPENSE": "EXPENSE",
-            "INCOME": "INCOME"
-        }
-    }
-}
