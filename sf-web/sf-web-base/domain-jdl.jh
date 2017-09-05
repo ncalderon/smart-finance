@@ -11,23 +11,23 @@ DEFAULT_MAX = 41
 
 
 enum AccountStatus {
-	INACTIVE, ACTIVE, DISABLED
+	INACTIVE, ACTIVE
 }
 
 enum AccountType {
-	DEFAULT, CREDIT_CARD
+	CHECKING_ACCOUNT, SAVING_ACCOUNT, CREDIT_CARD
 }
 
 enum TranStatus {
-	PENDING, EXPORTED, DELETED
+	UNCLEARED, CLEARED, RECONCILED, VOID
 }
 
 enum TranType {
-	DB, CR
+	EXPENSE, INCOME
 }
 
-enum TranMethod {
-	DEFAULT
+enum PaymentMethod {
+	CASH, CHECK, CREDIT_CARD, DEBIT, ELECTRONIC_TRANSFER
 }
 
 entity BankAccount {
@@ -85,14 +85,14 @@ relationship OneToMany {
 #}
 
 entity AccountTransaction {
-    tranStatus TranStatus required,
+    tranStatus TranStatus,
     tranType TranType required,
    	tranNumber String required minlength(1) maxlength(128),
     referenceNumber String,
     postDate Instant required,
     description String maxlength(DEFAULT_DESC_MAX_LENGTH),
     amount BigDecimal required,
-    tranMethod TranMethod required
+    paymentMethod PaymentMethod
 }
 
 relationship OneToMany {
