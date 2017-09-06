@@ -1,5 +1,6 @@
 package com.calderon.sf.web.rest;
 
+import com.calderon.sf.security.SecurityUtils;
 import com.codahale.metrics.annotation.Timed;
 import com.calderon.sf.domain.TranCategoryRegex;
 
@@ -92,7 +93,7 @@ public class TranCategoryRegexResource {
     @Timed
     public ResponseEntity<List<TranCategoryRegex>> getAllTranCategoryRegexes(@ApiParam Pageable pageable) {
         log.debug("REST request to get a page of TranCategoryRegexes");
-        Page<TranCategoryRegex> page = tranCategoryRegexRepository.findAll(pageable);
+        Page<TranCategoryRegex> page = tranCategoryRegexRepository.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/tran-category-regexes");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
