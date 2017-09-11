@@ -9,7 +9,7 @@ import { SfWebBaseHomeModule } from './home/home.module';
 import { SfWebBaseAdminModule } from './admin/admin.module';
 import { SfWebBaseAccountModule } from './account/account.module';
 import { SfWebBaseEntityModule } from './entities/entity.module';
-
+import { SfWebBaseEntityModule as Client } from './client/entity.module';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 
@@ -36,6 +36,7 @@ import {
         SfWebBaseAdminModule,
         SfWebBaseAccountModule,
         SfWebBaseEntityModule,
+        Client
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
