@@ -11,6 +11,7 @@ import { BankPopupService } from './bank-popup.service';
 import { BankService } from './bank.service';
 import { User, UserService } from '../../shared';
 import { ResponseWrapper } from '../../shared';
+import {Principal} from '../../shared/auth/principal.service';
 
 @Component({
     selector: 'jhi-bank-dialog',
@@ -18,6 +19,7 @@ import { ResponseWrapper } from '../../shared';
 })
 export class BankDialogComponent implements OnInit {
 
+    currentAccount: any;
     bank: Bank;
     isSaving: boolean;
 
@@ -28,7 +30,8 @@ export class BankDialogComponent implements OnInit {
         private alertService: JhiAlertService,
         private bankService: BankService,
         private userService: UserService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private principal: Principal,
     ) {
     }
 
@@ -36,6 +39,10 @@ export class BankDialogComponent implements OnInit {
         this.isSaving = false;
         this.userService.query()
             .subscribe((res: ResponseWrapper) => { this.users = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
     }
 
     clear() {
@@ -44,6 +51,7 @@ export class BankDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.bank.user = this.currentAccount;
         if (this.bank.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.bankService.update(this.bank));

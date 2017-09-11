@@ -42,14 +42,13 @@
                 </small>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="sfWebBaseApp.bank.user" for="field_user">User</label>
-            <select class="form-control" id="field_user" name="user" [(ngModel)]="bank.user" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="userOption.id === bank.user?.id ? bank.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
-            </select>
-        </div>
+        <!--<div class="form-group">
+           <label class="form-control-label" jhiTranslate="sfWebBaseApp.bank.user" for="field_user">User</label>
+           <select class="form-control" id="field_user" name="user" [(ngModel)]="bank.user" >
+               <option [ngValue]="null"></option>
+               <option [ngValue]="userOption.id === bank.user?.id ? bank.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+           </select>
+       </div>-->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
