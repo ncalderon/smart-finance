@@ -8,6 +8,7 @@ import { AccountTransactionComponent } from './account-transaction.component';
 import { AccountTransactionDetailComponent } from './account-transaction-detail.component';
 import { AccountTransactionPopupComponent } from './account-transaction-dialog.component';
 import { AccountTransactionDeletePopupComponent } from './account-transaction-delete-dialog.component';
+import {UploadAccountTransactionPopupComponent} from './upload-account-transaction-dialog/upload-account-transaction-dialog.component';
 
 @Injectable()
 export class AccountTransactionResolvePagingParams implements Resolve<any> {
@@ -27,7 +28,7 @@ export class AccountTransactionResolvePagingParams implements Resolve<any> {
 
 export const accountTransactionRoute: Routes = [
     {
-        path: 'account-transaction',
+        path: 'sf-account-transaction',
         component: AccountTransactionComponent,
         resolve: {
             'pagingParams': AccountTransactionResolvePagingParams
@@ -38,7 +39,7 @@ export const accountTransactionRoute: Routes = [
         },
         canActivate: [UserRouteAccessService]
     }, {
-        path: 'account-transaction/:id',
+        path: 'sf-account-transaction/:id',
         component: AccountTransactionDetailComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -50,7 +51,7 @@ export const accountTransactionRoute: Routes = [
 
 export const accountTransactionPopupRoute: Routes = [
     {
-        path: 'account-transaction-new',
+        path: 'sf-account-transaction-new',
         component: AccountTransactionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -60,7 +61,7 @@ export const accountTransactionPopupRoute: Routes = [
         outlet: 'popup'
     },
     {
-        path: 'account-transaction/:id/edit',
+        path: 'sf-account-transaction/:id/edit',
         component: AccountTransactionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -70,8 +71,21 @@ export const accountTransactionPopupRoute: Routes = [
         outlet: 'popup'
     },
     {
-        path: 'account-transaction/:id/delete',
+        path: 'sf-account-transaction/:id/delete',
         component: AccountTransactionDeletePopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'sfWebBaseApp.accountTransaction.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'popup'
+    }
+];
+
+export const uploadAccountTransactionPopupRoute: Routes = [
+    {
+        path: 'sf-upload-account-transaction',
+        component: UploadAccountTransactionPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'sfWebBaseApp.accountTransaction.home.title'

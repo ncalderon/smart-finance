@@ -15,11 +15,19 @@ import {
     accountTransactionRoute,
     accountTransactionPopupRoute,
     AccountTransactionResolvePagingParams,
+    uploadAccountTransactionPopupRoute
 } from './';
+import {
+    UploadAccountTransactionDialogComponent,
+    UploadAccountTransactionPopupComponent
+} from './upload-account-transaction-dialog/upload-account-transaction-dialog.component';
+import {UploadAccountTransactionPopupService} from './upload-account-transaction-dialog/upload-account-transaction-popup.service';
+
 
 const ENTITY_STATES = [
     ...accountTransactionRoute,
     ...accountTransactionPopupRoute,
+    ...uploadAccountTransactionPopupRoute
 ];
 
 @NgModule({
@@ -35,6 +43,8 @@ const ENTITY_STATES = [
         AccountTransactionDeleteDialogComponent,
         AccountTransactionPopupComponent,
         AccountTransactionDeletePopupComponent,
+        UploadAccountTransactionDialogComponent,
+        UploadAccountTransactionPopupComponent
     ],
     entryComponents: [
         AccountTransactionComponent,
@@ -42,11 +52,14 @@ const ENTITY_STATES = [
         AccountTransactionPopupComponent,
         AccountTransactionDeleteDialogComponent,
         AccountTransactionDeletePopupComponent,
+        UploadAccountTransactionDialogComponent,
+        UploadAccountTransactionPopupComponent
     ],
     providers: [
         AccountTransactionService,
         AccountTransactionPopupService,
         AccountTransactionResolvePagingParams,
+        UploadAccountTransactionPopupService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -65,7 +65,7 @@ currentAccount: any;
         }
     }
     transition() {
-        this.router.navigate(['/account-transaction'], {queryParams:
+        this.router.navigate(['/sf-account-transaction'], {queryParams:
             {
                 page: this.page,
                 size: this.itemsPerPage,
@@ -77,7 +77,7 @@ currentAccount: any;
 
     clear() {
         this.page = 0;
-        this.router.navigate(['/account-transaction', {
+        this.router.navigate(['/sf-account-transaction', {
             page: this.page,
             sort: this.predicate + ',' + (this.reverse ? 'asc' : 'desc')
         }]);
