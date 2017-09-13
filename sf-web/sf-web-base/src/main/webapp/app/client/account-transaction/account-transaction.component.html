@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="sfWebBaseApp.accountTransaction.home.title">Account Transactions</span>
-        <button>
+        <button class="btn btn-primary float-right upload-account-transaction" [routerLink]="['/', { outlets: { popup: ['sf-upload-account-transaction'] } }]">
             <span  jhiTranslate="sfWebBaseApp.accountTransaction.home.uploadLabel">
                 Upload from file
             </span>

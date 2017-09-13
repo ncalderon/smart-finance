@@ -4,7 +4,8 @@
             "home": {
                 "title": "Account Transactions",
                 "createLabel": "Create a new Account Transaction",
-                "createOrEditLabel": "Create or edit a Account Transaction"
+                "createOrEditLabel": "Create or edit a Account Transaction",
+                "uploadLabel": "Upload transactions file"
             },
             "created": "A new Account Transaction is created with identifier {{ param }}",
             "updated": "A Account Transaction is updated with identifier {{ param }}",

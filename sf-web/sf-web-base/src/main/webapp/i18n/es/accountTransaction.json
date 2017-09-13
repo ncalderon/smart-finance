@@ -4,7 +4,8 @@
             "home": {
                 "title": "Account Transactions",
                 "createLabel": "Crear nuevo Account Transaction",
-                "createOrEditLabel": "Crear o editar Account Transaction"
+                "createOrEditLabel": "Crear o editar Account Transaction",
+                "uploadLabel": "Cargar archivo de transacciones"
             },
             "created": "Un nuevo Account Transaction ha sido creado con el identificador {{ param }}",
             "updated": "Un Account Transaction ha sido actualizado con el identificador {{ param }}",

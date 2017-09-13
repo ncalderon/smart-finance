@@ -2,25 +2,36 @@
     .my-drop-zone { border: dotted 3px lightgray; }
     .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
     .another-file-over-class { border: dotted 3px green; }
-
-    html, body { height: 100%; }
+    .windowClass { }
+/*
+    html, body { height: 100%; }*/
 </style>
 
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
     <div class="modal-header">
-        <h4 class="modal-title" id="myUploadAccountTransactionLabel" jhiTranslate="sfWebBaseApp.uploadAccountTransaction.home.uploadFileLabel">Upload file transaction</h4>
+        <h4 class="modal-title" id="myUploadAccountTransactionLabel" jhiTranslate="sfWebBaseApp.accountTransaction.home.uploadLabel">Upload file transaction</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="sfWebBaseApp.accountTransaction.bankAccount" for="field_bankAccount">Bank Account</label>
+            <select class="form-control" id="field_bankAccount" name="bankAccount" [(ngModel)]="accountTransaction.bankAccount"  required>
+                <option *ngIf="!editForm.value.bankAccount" [ngValue]="null" selected></option>
+                <option [ngValue]="bankAccountOption.id === accountTransaction.bankAccount?.id ? accountTransaction.bankAccount : bankAccountOption" *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.name}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.bankAccount?.dirty && editForm.controls.bankAccount?.invalid)">
+            <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.bankAccount?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
         <div class="row">
-
-            <div class="col-md-3">
-
+            <div class="col-md-offset-3 col-md-9">
                 <h3>Select files</h3>
-                <!--<input type="file" ng2FileSelect [uploader]="uploader" />-->
+                <input type="file" ng2FileSelect [uploader]="uploader" />
                 <div ng2FileDrop
                      [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
                      (fileOver)="fileOverBase($event)"
@@ -29,12 +40,13 @@
                     Base drop zone
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-9" style="margin-bottom: 40px">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9" style="margin-bottom: 40px">
 
                 <h3>Upload queue</h3>
                 <p>Queue length: {{ uploader?.queue?.length }}</p>
-
                 <table class="table">
                     <thead>
                     <tr>
@@ -42,7 +54,7 @@
                         <th>Size</th>
                         <th>Progress</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <!--<th>Actions</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -59,7 +71,7 @@
                             <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
                             <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
                         </td>
-                        <td nowrap>
+                        <!--<td nowrap>
                             <button type="button" class="btn btn-success btn-xs"
                                     (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
                                 <span class="glyphicon glyphicon-upload"></span> Upload
@@ -72,7 +84,7 @@
                                     (click)="item.remove()">
                                 <span class="glyphicon glyphicon-trash"></span> Remove
                             </button>
-                        </td>
+                        </td>-->
                     </tr>
                     </tbody>
                 </table>

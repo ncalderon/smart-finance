@@ -22,6 +22,8 @@ import {
     UploadAccountTransactionPopupComponent
 } from './upload-account-transaction-dialog/upload-account-transaction-dialog.component';
 import {UploadAccountTransactionPopupService} from './upload-account-transaction-dialog/upload-account-transaction-popup.service';
+import {FileUploader, FileUploadModule} from 'ng2-file-upload';
+import { UploadAccountTransactionComponent } from './src/main/webapp/app/client/account-transaction/upload-account-transaction/upload-account-transaction.component';
 
 
 const ENTITY_STATES = [
@@ -34,7 +36,8 @@ const ENTITY_STATES = [
     imports: [
         SfWebBaseSharedModule,
         SfWebBaseAdminModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true }),
+        FileUploadModule
     ],
     declarations: [
         AccountTransactionComponent,
@@ -44,7 +47,9 @@ const ENTITY_STATES = [
         AccountTransactionPopupComponent,
         AccountTransactionDeletePopupComponent,
         UploadAccountTransactionDialogComponent,
-        UploadAccountTransactionPopupComponent
+        UploadAccountTransactionPopupComponent,
+        UploadAccountTransactionComponent,
+
     ],
     entryComponents: [
         AccountTransactionComponent,

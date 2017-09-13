@@ -31,7 +31,7 @@ export class UploadAccountTransactionPopupService {
     }
 
     uploadAccountTransactionModalRef(component: Component): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static', windowClass: "customwindowClass"});
         modalRef.result.then((result) => {
             this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
             this.ngbModalRef = null;

@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {ActivatedRoute} from '@angular/router';
 import {UploadAccountTransactionPopupService} from './upload-account-transaction-popup.service';
+import {UserService} from '../../../shared/user/user.service';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-upload-account-transaction-dialog',
@@ -10,10 +13,17 @@ import {UploadAccountTransactionPopupService} from './upload-account-transaction
 })
 
 export class UploadAccountTransactionDialogComponent implements OnInit {
-    public uploader: FileUploader = new FileUploader({url: 'api/account-transactions'});
-    public hasBaseDropZoneOver = false;
 
-    constructor() { }
+    uploader: FileUploader = new FileUploader({url: 'api/account-transactions'});
+    hasBaseDropZoneOver = false;
+    isSaving: boolean;
+
+    constructor(
+        public activeModal: NgbActiveModal,
+        private alertService: JhiAlertService,
+        private userService: UserService,
+        private eventManager: JhiEventManager
+    ) { }
 
     ngOnInit() {
 
@@ -21,6 +31,14 @@ export class UploadAccountTransactionDialogComponent implements OnInit {
 
     public fileOverBase(e: any):void {
         this.hasBaseDropZoneOver = e;
+    }
+
+    clear() {
+        this.activeModal.dismiss('cancel');
+    }
+
+    save() {
+        this.isSaving = true;
     }
 }
 
