@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {JhiEventManager} from 'ng-jhipster';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {AccountTransaction} from '../account-transaction.model';
 
 @Component({
   selector: 'jhi-upload-account-transaction',
@@ -12,6 +13,7 @@ export class UploadAccountTransactionComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
     private eventSubscriber: Subscription;
+    accountTransactions: AccountTransaction[] = [];
 
     constructor(
         private eventManager: JhiEventManager,

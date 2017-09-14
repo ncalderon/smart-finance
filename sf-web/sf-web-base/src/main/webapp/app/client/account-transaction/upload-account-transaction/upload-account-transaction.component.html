@@ -1,5 +1,5 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-    <h2><span jhiTranslate="sfWebBaseApp.accountTransaction.detail.title">Account Transaction</span> {{accountTransaction.id}}</h2>
+    <h2><span>Upload File Transactions</span></h2>
     <hr>
     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
         <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
@@ -10,10 +10,15 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <div class="form-group">
-        <label class="form-control-label" jhiTranslate="sfWebBaseApp.accountTransaction.bankAccount" for="field_bankAccount">Bank Account</label>
-        <select class="form-control" id="field_bankAccount" name="bankAccount" [(ngModel)]="accountTransaction.bankAccount"  required>
+        <label class="form-control-label" jhiTranslate="sfWebBaseApp.accountTransaction.bankAccount"
+               for="field_bankAccount">Bank Account</label>
+        <select class="form-control" id="field_bankAccount" name="bankAccount"
+                [(ngModel)]="accountTransaction.bankAccount" required>
             <option *ngIf="!editForm.value.bankAccount" [ngValue]="null" selected></option>
-            <option [ngValue]="bankAccountOption.id === accountTransaction.bankAccount?.id ? accountTransaction.bankAccount : bankAccountOption" *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.name}}</option>
+            <option
+                [ngValue]="bankAccountOption.id === accountTransaction.bankAccount?.id ? accountTransaction.bankAccount : bankAccountOption"
+                *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.name}}
+            </option>
         </select>
     </div>
     <div [hidden]="!(editForm.controls.bankAccount?.dirty && editForm.controls.bankAccount?.invalid)">
@@ -24,7 +29,7 @@
     </div>
     <div class="form-group">
         <label class="form-control-label" for="field_bankAccount">Bank Account</label>
-        <input type="file" ng2FileSelect [uploader]="uploader" />
+        <input type="file" ng2FileSelect [uploader]="uploader"/>
         <div ng2FileDrop
              [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
              (fileOver)="fileOverBase($event)"
@@ -62,13 +67,13 @@
                 <p>Queue length: {{ uploader?.queue?.length }}</p>
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th width="50%">Name</th>
-                            <th>Size</th>
-                            <th>Progress</th>
-                            <th>Status</th>
-                            <!--<th>Actions</th>-->
-                        </tr>
+                    <tr>
+                        <th width="50%">Name</th>
+                        <th>Size</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let item of uploader.queue">
@@ -76,7 +81,8 @@
                         <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
                         <td *ngIf="uploader.isHTML5">
                             <div class="progress" style="margin-bottom: 0;">
-                                <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                <div class="progress-bar" role="progressbar"
+                                     [ngStyle]="{ 'width': item.progress + '%' }"></div>
                             </div>
                         </td>
                         <td class="text-center">
@@ -88,6 +94,49 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+    <div class="table-responsive"  *ngIf="accountTransactions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="postDate"><span jhiTranslate="sfWebBaseApp.accountTransaction.postDate">Post Date</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="tranType"><span jhiTranslate="sfWebBaseApp.accountTransaction.tranType">Tran Type</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="tranCategory.name"><span jhiTranslate="sfWebBaseApp.accountTransaction.tranCategory">Tran Category</span>
+                    <span class="fa fa-sort"></span></th>
+                <th jhiSortBy="description"><span
+                    jhiTranslate="sfWebBaseApp.accountTransaction.description">Description</span> <span
+                    class="fa fa-sort"></span></th>
+                <th jhiSortBy="amount"><span jhiTranslate="sfWebBaseApp.accountTransaction.amount">Amount</span> <span
+                    class="fa fa-sort"></span></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let accountTransaction of accountTransactions ;trackBy: trackId">
+                    <td>{{accountTransaction.postDate | date:'medium'}}</td>
+                    <td jhiTranslate="{{'sfWebBaseApp.TranType.' + accountTransaction.tranType}}">
+                        {{accountTransaction.tranType}}
+                    </td>
+                    <td>
+                        <div *ngIf="accountTransaction.tranCategory">
+                            <a [routerLink]="['../tran-category', accountTransaction.tranCategory?.id ]">{{accountTransaction.tranCategory?.name}}</a>
+                        </div>
+                    </td>
+                    <td>{{accountTransaction.description}}</td>
+                    <td>{{accountTransaction.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="accountTransactions && accountTransactions.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page"
+                            (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </form>
