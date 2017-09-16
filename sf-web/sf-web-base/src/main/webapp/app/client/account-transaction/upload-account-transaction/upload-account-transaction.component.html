@@ -1,6 +1,11 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
     <h2><span>Upload File Transactions</span></h2>
     <hr>
+    <button type="button"
+            (click)="goBack()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
         <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
     </button>
@@ -13,10 +18,10 @@
         <label class="form-control-label" jhiTranslate="sfWebBaseApp.accountTransaction.bankAccount"
                for="field_bankAccount">Bank Account</label>
         <select class="form-control" id="field_bankAccount" name="bankAccount"
-                [(ngModel)]="accountTransaction.bankAccount" required>
+                [(ngModel)]="bankAccount" required>
             <option *ngIf="!editForm.value.bankAccount" [ngValue]="null" selected></option>
             <option
-                [ngValue]="bankAccountOption.id === accountTransaction.bankAccount?.id ? accountTransaction.bankAccount : bankAccountOption"
+                [ngValue]="bankAccountOption.id === bankAccount?.id ? bankAccount : bankAccountOption"
                 *ngFor="let bankAccountOption of bankaccounts; trackBy: trackBankAccountById">{{bankAccountOption.name}}
             </option>
         </select>
@@ -28,7 +33,6 @@
         </small>
     </div>
     <div class="form-group">
-        <label class="form-control-label" for="field_bankAccount">Bank Account</label>
         <input type="file" ng2FileSelect [uploader]="uploader"/>
         <div ng2FileDrop
              [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"

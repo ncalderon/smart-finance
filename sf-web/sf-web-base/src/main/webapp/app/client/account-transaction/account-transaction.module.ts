@@ -15,21 +15,15 @@ import {
     accountTransactionRoute,
     accountTransactionPopupRoute,
     AccountTransactionResolvePagingParams,
-    uploadAccountTransactionPopupRoute
+    UploadAccountTransactionComponent
 } from './';
-import {
-    UploadAccountTransactionDialogComponent,
-    UploadAccountTransactionPopupComponent
-} from './upload-account-transaction-dialog/upload-account-transaction-dialog.component';
-import {UploadAccountTransactionPopupService} from './upload-account-transaction-dialog/upload-account-transaction-popup.service';
-import {FileUploader, FileUploadModule} from 'ng2-file-upload';
-import { UploadAccountTransactionComponent } from './src/main/webapp/app/client/account-transaction/upload-account-transaction/upload-account-transaction.component';
+
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 const ENTITY_STATES = [
     ...accountTransactionRoute,
-    ...accountTransactionPopupRoute,
-    ...uploadAccountTransactionPopupRoute
+    ...accountTransactionPopupRoute
 ];
 
 @NgModule({
@@ -45,26 +39,19 @@ const ENTITY_STATES = [
         AccountTransactionDialogComponent,
         AccountTransactionDeleteDialogComponent,
         AccountTransactionPopupComponent,
-        AccountTransactionDeletePopupComponent,
-        UploadAccountTransactionDialogComponent,
-        UploadAccountTransactionPopupComponent,
-        UploadAccountTransactionComponent,
-
+        AccountTransactionDeletePopupComponent
     ],
     entryComponents: [
         AccountTransactionComponent,
         AccountTransactionDialogComponent,
         AccountTransactionPopupComponent,
         AccountTransactionDeleteDialogComponent,
-        AccountTransactionDeletePopupComponent,
-        UploadAccountTransactionDialogComponent,
-        UploadAccountTransactionPopupComponent
+        AccountTransactionDeletePopupComponent
     ],
     providers: [
         AccountTransactionService,
         AccountTransactionPopupService,
-        AccountTransactionResolvePagingParams,
-        UploadAccountTransactionPopupService
+        AccountTransactionResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

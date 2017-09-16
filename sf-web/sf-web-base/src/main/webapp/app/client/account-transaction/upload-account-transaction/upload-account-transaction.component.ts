@@ -3,6 +3,9 @@ import {JhiEventManager} from 'ng-jhipster';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {AccountTransaction} from '../account-transaction.model';
+import {LoggerService} from "../../../shared/logger/logger.service";
+import {BankAccount} from "../../bank-account/bank-account.model";
+import {FileUploader} from "ng2-file-upload";
 
 @Component({
   selector: 'jhi-upload-account-transaction',
@@ -11,11 +14,19 @@ import {AccountTransaction} from '../account-transaction.model';
 })
 export class UploadAccountTransactionComponent implements OnInit, OnDestroy {
 
+    uploader: FileUploader = new FileUploader({url: 'api/account-transactions/upload-file'});
+    hasBaseDropZoneOver = false;
+    isSaving: boolean;
+
     private subscription: Subscription;
     private eventSubscriber: Subscription;
+
+
+    bankAccount: BankAccount;
     accountTransactions: AccountTransaction[] = [];
 
     constructor(
+        private logger: LoggerService,
         private eventManager: JhiEventManager,
         private route: ActivatedRoute
     ) {
@@ -29,11 +40,20 @@ export class UploadAccountTransactionComponent implements OnInit, OnDestroy {
     }
 
     load() {
-
+        this.logger.log("***Loading***");
     }
 
-    previousState() {
+    goBack() {
+        this.logger.log("***Back***");
         window.history.back();
+    }
+
+    clear() {
+        this.logger.log("***Clear***");
+    }
+
+    save(){
+        this.logger.log("***Saving***");
     }
 
     ngOnDestroy() {

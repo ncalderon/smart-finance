@@ -46,6 +46,14 @@ export const accountTransactionRoute: Routes = [
             pageTitle: 'sfWebBaseApp.accountTransaction.home.title'
         },
         canActivate: [UserRouteAccessService]
+    }, {
+        path: 'sf-account-transaction/upload',
+        component: UploadAccountTransactionPopupComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'sfWebBaseApp.accountTransaction.home.title'
+        },
+        canActivate: [UserRouteAccessService]
     }
 ];
 

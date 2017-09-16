@@ -15,8 +15,10 @@ import {
     HasAnyAuthorityDirective,
     JhiSocialComponent,
     SocialService,
-    JhiLoginModalComponent
+    JhiLoginModalComponent,
+    LoggerService
 } from './';
+
 
 @NgModule({
     imports: [
@@ -38,7 +40,8 @@ import {
         AuthServerProvider,
         SocialService,
         UserService,
-        DatePipe
+        DatePipe,
+        LoggerService
     ],
     entryComponents: [JhiLoginModalComponent],
     exports: [
