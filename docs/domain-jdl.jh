@@ -18,16 +18,12 @@ enum AccountType {
 	CHECKING_ACCOUNT, SAVING_ACCOUNT, CREDIT_CARD
 }
 
-enum TranStatus {
-	UNCLEARED, CLEARED, RECONCILED, VOID
-}
-
 enum TranType {
 	EXPENSE, INCOME
 }
 
 enum PaymentMethod {
-	CASH, CHECK, CREDIT_CARD, DEBIT, ELECTRONIC_TRANSFER
+	UNSPECIFIED, CASH, CHECK, CREDIT_CARD, DEBIT, ELECTRONIC_TRANSFER
 }
 
 entity BankAccount {
@@ -85,7 +81,6 @@ relationship OneToMany {
 #}
 
 entity AccountTransaction {
-    tranStatus TranStatus,
     tranType TranType required,
    	tranNumber String required minlength(1) maxlength(128),
     referenceNumber String,
