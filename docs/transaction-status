@@ -1,0 +1,15 @@
+What's the difference between Reconciled, Unreconciled, Void, and Cleared?
+Last Updated: Sep 25, 2012 01:15PM PDT
+
+Unreconciled: The check has not been cleared and is pending approval from the receiving bank.
+This is the state when you write a check but the banks have not yet been envolved in the transaction.
+
+Cleared: The check has been recorded at your bank. You know the check has been recorded.
+
+Reconciled: The check has cleared the bank and funds have been deposited.
+This usually happens at the end of the month once you've received your bank statement. You would convert cleared transactions to reconciled.
+
+Void: A check was written but canceled or thrown out. The bank has not recorded this check.
+
+In general, if you are entering a new transaction immediately after you've paid, it will default to Unreconciled.
+The next time you view your transactions online, you can start marking the ones you see as cleared on the My Transactions page unless it's marked Pending by your bank. Once you receive your bank statement, you should then mark them as reconciled. When importing transactions, we default all transactions to cleared since you are most likely importing them from your bank or financial institution online.
