@@ -1,0 +1,7 @@
+com\calderon\sf\reader\interpreter\BankInterpreter.class
+com\calderon\sf\reader\interpreter\TransactionInterpreter.class
+com\calderon\sf\reader\interpreter\TransactionsInterpreter.class
+com\calderon\sf\reader\interpreter\AccountInterpreter.class
+com\calderon\sf\reader\filter\TransactionFilters.class
+com\calderon\sf\reader\interpreter\AccountLinesInterpreter.class
+com\calderon\sf\reader\CsvReader.class

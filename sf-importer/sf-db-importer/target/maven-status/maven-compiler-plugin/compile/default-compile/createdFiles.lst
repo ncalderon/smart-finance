@@ -1,0 +1,5 @@
+com\calderoncode\sf\importer\DbImporter.class
+com\calderoncode\sf\importer\service\BankServiceData.class
+com\calderoncode\sf\importer\configuration\BeanConfigurator.class
+com\calderoncode\sf\importer\service\AccountServiceData.class
+com\calderoncode\sf\importer\parser\TransactionParser.class

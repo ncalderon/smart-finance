@@ -19,9 +19,9 @@
         <sqlite-jdbc.version>3.18.0</sqlite-jdbc.version>
     </properties>
 
-    <modules>
+    <!--<modules>
         <module>em-data-test</module>
-    </modules>
+    </modules>-->
 
     <dependencies>
         <dependency>

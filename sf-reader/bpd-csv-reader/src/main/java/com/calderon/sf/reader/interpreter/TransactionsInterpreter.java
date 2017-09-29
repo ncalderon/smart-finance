@@ -2,10 +2,8 @@ package com.calderon.sf.reader.interpreter;
 
 
 import com.calderon.sf.reader.filter.TransactionFilters;
-
-import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
-import com.calderoncode.sf.transport.Account;
-import com.calderoncode.sf.transport.Transaction;
+import com.calderon.sf.transport.Account;
+import com.calderon.sf.transport.Transaction;
 
 import java.util.List;
 import java.util.stream.Collectors;

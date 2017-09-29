@@ -10,10 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sf-data</artifactId>
-    <packaging>pom</packaging>
-    <modules>
+    <!--<packaging>pom</packaging>-->
+    <!--<modules>
         <module>sf-data-test</module>
-    </modules>
+    </modules>-->
     <properties>
         <!--<release-train>Ingalls-SR5</release-train>-->
         <hibernate.version>5.2.10.Final</hibernate.version>

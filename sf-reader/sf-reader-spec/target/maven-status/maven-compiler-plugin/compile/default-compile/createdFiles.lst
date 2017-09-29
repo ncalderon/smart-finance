@@ -1,0 +1,3 @@
+com\calderon\sf\reader\interpreter\BodyInterpreter.class
+com\calderon\sf\reader\interpreter\filter\LineFilter.class
+com\calderon\sf\reader\Reader.class

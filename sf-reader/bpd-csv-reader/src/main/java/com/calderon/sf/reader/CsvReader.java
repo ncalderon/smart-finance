@@ -3,10 +3,8 @@ package com.calderon.sf.reader;
 import com.calderon.sf.reader.interpreter.AccountInterpreter;
 import com.calderon.sf.reader.interpreter.TransactionsInterpreter;
 import com.calderon.sf.reader.interpreter.AccountLinesInterpreter;
-
-import com.calderoncode.sf.reader.Reader;
-import com.calderoncode.sf.transport.Account;
-import com.calderoncode.sf.transport.Transaction;
+import com.calderon.sf.transport.Account;
+import com.calderon.sf.transport.Transaction;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

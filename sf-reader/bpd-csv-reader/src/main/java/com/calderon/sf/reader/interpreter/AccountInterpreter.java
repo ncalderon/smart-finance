@@ -1,11 +1,9 @@
 package com.calderon.sf.reader.interpreter;
 
-
-import com.calderoncode.sf.reader.interpreter.BodyInterpreter;
-import com.calderoncode.sf.transport.Account;
-import com.calderoncode.sf.transport.AccountTypeEnum;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.calderon.sf.transport.Account;
+import com.calderon.sf.transport.AccountTypeEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
@@ -14,7 +12,8 @@ import java.time.LocalDateTime;
  */
 public class AccountInterpreter implements BodyInterpreter<Account> {
 
-    private static final Logger log = LogManager.getLogger(AccountInterpreter.class.getName());
+    /*private static final Logger log = LogManager.getLogger(AccountInterpreter.class.getName());*/
+    private final Logger log = LoggerFactory.getLogger(AccountInterpreter.class);
     private static final String splitRegex = ",";
     private static final int ACCOUNT_NAME_INDEX = 0;
     private static final int BANK_NAME_INDEX = 1;

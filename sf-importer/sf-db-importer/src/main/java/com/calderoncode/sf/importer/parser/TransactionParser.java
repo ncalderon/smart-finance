@@ -13,7 +13,7 @@ public class TransactionParser {
         transactionEntity.setStatusId(TranStatusEnum.PENDING.id());
         transactionEntity.setCategoryId(tran.getCategory().id());
         transactionEntity.setTranAmount(tran.getTranAmount());
-        transactionEntity.setTranPostDate(tran.getTranPostDate());
+        transactionEntity.setTranPostDate(tran.getTimestampTranPostDate());
         transactionEntity.setTranDesc(tran.getTranDesc());
         transactionEntity.setTranRefNum(tran.getTranRefNum());
         transactionEntity.setTypeId(tran.getType().id());

@@ -2,7 +2,6 @@ package com.calderon.sf.reader.filter;
 
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
-
 /**
  * Created by Nathaniel on 6/25/2017.
  */
