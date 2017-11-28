@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
+
+    <groupId>com.calderon.sf</groupId>
+    <artifactId>smart-finance</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <properties>
+        <project.version>1.0</project.version>
+        <java.version>1.8</java.version>
+        <jackson.annotations.version>2.8.0</jackson.annotations.version>
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <mysql.version>6.0.6</mysql.version>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
+    </properties>
+    <modules>
+        <!--<module>trans-persistence</module>
+        <module>trans-persistence</module>
+        <module>trans-exporter</module>
+        <module>commons</module>-->
+
+        <!--<module>sf-web</module>
+        <module>sf-data</module>
+        <module>sf-importer</module>
+        <module>sf-exporter</module>
+        <module>sf-writer</module>-->
+        <module>sf-transport</module>
+        <module>sf-reader</module>
+        <module>sf-commons</module>
+    </modules>
+
+    <dependencies>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>-->
+    </dependencies>
+
+    <!--
+
+        <build>
+            <pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>1.8</source>
+                            <target>1.8</target>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </pluginManagement>
+        </build>
+    -->
+
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.1</version>
+                <configuration>
+                    <altDeploymentRepository>internal.repo::default::file://${user.dir}/mvn-repo
+                    </altDeploymentRepository>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.11</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${user.dir}/mvn-repo
+                    </outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>smart-finance</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>ncalderon</repositoryOwner>    <!-- github username  -->
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
